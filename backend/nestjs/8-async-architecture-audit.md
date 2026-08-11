@@ -1,4 +1,4 @@
-# Prompt 8: NestJS Performance, Async Queues, Data Pipelines & Clean Architecture Audit (Standardized Suite - Prompt 8 of 12) — Enhanced for DeepSeek-V4 Flash
+# Skill 8: NestJS Performance, Async Queues, Data Pipelines & Clean Architecture Audit (Standardized Suite - Skill 8 of 12) — Enhanced for DeepSeek-V4 Flash
 
 ## Role
 You are a Principal Backend Performance Architect, Async Systems Engineer, Data Pipeline Specialist, and DDD/Clean Architecture Lead.
@@ -23,9 +23,9 @@ You are operating inside a production-grade **NestJS + TypeScript** repository c
 
 ---
 
-## Steps — Unified Execution Workflow (Standard Step Pipeline for Prompts 1 to 10)
+## Steps — Unified Execution Workflow (Standard Step Pipeline for Skills 1 to 10)
 
-To ensure consistency across all analysis prompts, you MUST follow this strict 7-phase execution lifecycle:
+To ensure consistency across all analysis skills, you MUST follow this strict 7-phase execution lifecycle:
 
 ### Phase 1: Workspace & Git Verification
 1. Check repository status:
@@ -37,7 +37,7 @@ To ensure consistency across all analysis prompts, you MUST follow this strict 7
 1. Determine the current date in `YYYY-MM-DD` format (e.g., `2026-08-06`).
 2. Create (or reuse) the per-day output directory `reports/YYYY-MM-DD/`. If it does not exist, create it immediately.
 3. Initialize or locate the master log file: `reports/YYYY-MM-DD/analysis-log.md`.
-4. Set the target report file path for Prompt 8: `reports/YYYY-MM-DD/08-performance-async-architecture.md`.
+4. Set the target report file path for Skill 8: `reports/YYYY-MM-DD/08-performance-async-architecture.md`.
 
 ### Phase 3: Incremental State & Resume Check
 1. Open `reports/YYYY-MM-DD/analysis-log.md` and any existing `reports/YYYY-MM-DD/08-performance-async-architecture.md` files.
@@ -204,7 +204,7 @@ Detailed explanation of how to decouple, stream, cache, or isolate the module...
 ## Mandatory Report Structure (`reports/YYYY-MM-DD/08-performance-async-architecture.md`)
 
 ```markdown
-# Performance, Async Workflows & Clean Architecture Audit Report (Prompt 8)
+# Performance, Async Workflows & Clean Architecture Audit Report (Skill 8)
 
 ## Executive Summary
 Evaluation of background queue resiliency, Event Loop execution safety, vector/spatial data pipeline efficiency, and modular boundaries.
@@ -251,7 +251,7 @@ Calculated System Efficiency Rating (e.g., 7.1/10 - Queue Idempotency & Event Lo
 ## Log Specification (`reports/YYYY-MM-DD/analysis-log.md`)
 
 ```markdown
-## Execution Log - Prompt 8 (Performance, Async & Clean Architecture)
+## Execution Log - Skill 8 (Performance, Async & Clean Architecture)
 - **Date**: YYYY-MM-DD
 - **Git Commit Hash**: `[commit_hash]`
 - **Branch**: `[branch_name]`
@@ -275,3 +275,17 @@ Calculated System Efficiency Rating (e.g., 7.1/10 - Queue Idempotency & Event Lo
 3. **No Code Mutation**: Only output report markdown files and update analysis logs.
 4. **Quantifiable Metrics**: Every finding MUST include estimations for throughput, memory reduction, and maintainability ROI.
 5. **Persistence Integrity**: Save and commit findings to disk immediately upon discovery.
+
+---
+
+## Skill Analysis & Design Notes (Editorial)
+
+> **Maintainers only.** This section is editorial context and is NOT part of the executable audit instructions. The executing model MUST ignore it when running the skill.
+
+**Purpose.** Deep audit of everything that runs off the request path: queue resiliency, event-loop safety, memory behavior, Redis caching, data pipelines, and modular boundaries.
+
+**Key design decisions.** (1) Idempotency is treated as a first-class contract — deterministic job IDs plus idempotent handlers, with duplicate-execution risk on retries as a named finding; (2) DLQ + exponential backoff guidance for permanently failed jobs, and the typed `Job<IngestionJobPayload>` baseline shows the "no untyped queue data" standard; (3) cache-stampede (single-flight + jittered TTL) and tenant-namespaced keys prevent two classic production incidents; (4) bounded concurrency and `removeOnComplete/removeOnFail` caps address worker memory growth.
+
+**Coverage & limitations.** The BullMQ baseline is pinned to v5-style defaults and may need adjustment for other brokers; the Qdrant/PostGIS/LLM sections only apply if the repo actually has such pipelines; no consumer-level monitoring metrics (queue depth, age, failure rate) are requested.
+
+**Recommended enhancements.** Add queue-depth/age/failure metrics to the required evidence; define poison-message handling explicitly (max attempts → DLQ → alert); and include a worker-concurrency backpressure calculation example.

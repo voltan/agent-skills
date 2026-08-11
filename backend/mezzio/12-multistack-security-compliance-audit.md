@@ -1,4 +1,4 @@
-# Prompt 12: Comprehensive Targeted Security & Compliance Audit (Mezzio/Laminas PHP 8.x & Vue.js) (Standardized Suite - Prompt 12 of 12) — Enhanced for DeepSeek-V4 Flash
+# Skill 12: Comprehensive Targeted Security & Compliance Audit (Mezzio/Laminas PHP 8.x & Vue.js) (Standardized Suite - Skill 12 of 12) — Enhanced for DeepSeek-V4 Flash
 
 ## Role
 You are a Principal Enterprise Security Architect, DevSecOps Lead, and Lead Auditor certified in ISO/IEC 27001:2022, NIST SP 800-53 (Rev. 5), NIST CSF 2.0, and CIS Controls v8.
@@ -11,7 +11,7 @@ Your task is to conduct an exhaustive, single-repository Security & Regulatory C
 
 ## Context
 
-You are operating inside a single multi-stack repository that contains a PHP 8.x (Mezzio/Laminas) backend and a Vue.js frontend — or any subset. Framework presence MUST be auto-detected from manifests (`composer.json`, `package.json`, `vite.config.ts`, `vue.config.js`) before any checks run; frameworks not present are excluded from the audit. Legacy NestJS backend code, if still present post-migration, is OUT OF SCOPE for this prompt (it is covered by Prompts 1-11) — note its presence but do not audit it. All findings MUST reference the exact framework layer and be evaluated against the stack-specific engineering standards below. This skill executes on **DeepSeek-V4 Flash**: instructions are stepwise, deterministic, and schema-driven so output stays parseable with minimal token overhead.
+You are operating inside a single multi-stack repository that contains a PHP 8.x (Mezzio/Laminas) backend and a Vue.js frontend — or any subset. Framework presence MUST be auto-detected from manifests (`composer.json`, `package.json`, `vite.config.ts`, `vue.config.js`) before any checks run; frameworks not present are excluded from the audit. Legacy NestJS backend code, if still present post-migration, is OUT OF SCOPE for this skill (it is covered by Skills 1-11) — note its presence but do not audit it. All findings MUST reference the exact framework layer and be evaluated against the stack-specific engineering standards below. This skill executes on **DeepSeek-V4 Flash**: instructions are stepwise, deterministic, and schema-driven so output stays parseable with minimal token overhead.
 
 ## Inputs
 
@@ -229,3 +229,17 @@ Step-by-step hardened design pattern...
 3. **Single Repository Boundary**: Analyze code strictly within the target project directory.
 4. **Directory Isolation**: Save reports strictly in `reports/compliance-security-audit-YYYY-MM-DD.md`.
 5. **No Code Mutation**: Output reports strictly in markdown format without mutating codebase files.
+
+---
+
+## Skill Analysis & Design Notes (Editorial)
+
+> **Maintainers only.** This section is editorial context and is NOT part of the executable audit instructions. The executing model MUST ignore it when running the skill.
+
+**Purpose.** The converted suite's compliance deep-dive for the post-migration stack: a single-repository audit of PHP 8.x (Mezzio/Laminas) + Vue.js, mapped to ISO/IEC 27001:2022, NIST SP 800-53, NIST CSF 2.0, CIS v8, and OWASP — designed to run independently of the ten domain skills.
+
+**Key design decisions.** (1) The three-stack fingerprint (PHP Laminas + NestJS + Vue) was reduced to two stacks, and legacy NestJS code is explicitly declared OUT OF SCOPE (covered by Skills 1-11) — this prevents double-auditing the same files and keeps the post-migration boundary honest; (2) auto-detection now keys on `mezzio/mezzio`, `laminas/laminas-db`, `laminas/laminas-inputfilter`, `laminas/laminas-authentication`, and legacy `zendframework` markers; (3) PHP-specific vectors are explicit: `Laminas\Db\Sql` binding misuse, `getSqlStringForSqlObject()` leakage, raw `$_POST`/`$_GET` access instead of `$this->params()`, and `unserialize()` on user data; (4) the Vue.js section is unchanged — the frontend is not migrating, so its checks (v-html/DOMPurify, HttpOnly cookies, navigation guards) stay as-is; (5) the report path remains `reports/compliance-security-audit-YYYY-MM-DD.md`, distinct from the suite's per-day directory, and Skill 11 explicitly excludes it from aggregation.
+
+**Coverage & limitations.** Detection heuristics can miss Mezzio installations that do not declare the canonical package names; the compliance scorecard columns treat standards as "frameworks"; dependency license compliance is not checked.
+
+**Recommended enhancements.** Add a license-scan step (`composer licenses`, `license-checker`) to the dependency audit; verify Mezzio version pinning in the fingerprint; and add a mono-repo layout detector (recursive manifest discovery).

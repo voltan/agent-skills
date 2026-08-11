@@ -1,4 +1,4 @@
-# Prompt 7: Mezzio DevOps, Containerization & CI/CD Pipeline Audit (Standardized Suite - Prompt 7 of 12) — Enhanced for DeepSeek-V4 Flash
+# Skill 7: Mezzio DevOps, Containerization & CI/CD Pipeline Audit (Standardized Suite - Skill 7 of 12) — Enhanced for DeepSeek-V4 Flash
 
 ## Role
 You are a Principal DevOps Architect, Cloud Infrastructure Specialist, Containerization Engineer, and Supply-Chain Security Lead.
@@ -23,9 +23,9 @@ You are operating inside a production-grade **PHP 8.x + Mezzio/Laminas** reposit
 
 ---
 
-## Steps — Unified Execution Workflow (Standard Step Pipeline for Prompts 1 to 10)
+## Steps — Unified Execution Workflow (Standard Step Pipeline for Skills 1 to 10)
 
-To ensure consistency across all analysis prompts, you MUST follow this strict 7-phase execution lifecycle:
+To ensure consistency across all analysis skills, you MUST follow this strict 7-phase execution lifecycle:
 
 ### Phase 1: Workspace & Git Verification
 1. Check repository status:
@@ -37,7 +37,7 @@ To ensure consistency across all analysis prompts, you MUST follow this strict 7
 1. Determine the current date in `YYYY-MM-DD` format.
 2. Create (or reuse) the per-day output directory `reports/YYYY-MM-DD/`. If it does not exist, create it immediately.
 3. Initialize or locate the master log file: `reports/YYYY-MM-DD/analysis-log.md`.
-4. Set the target report file path for Prompt 7: `reports/YYYY-MM-DD/07-cicd-infrastructure.md`.
+4. Set the target report file path for Skill 7: `reports/YYYY-MM-DD/07-cicd-infrastructure.md`.
 
 ### Phase 3: Incremental State & Resume Check
 1. Open `reports/YYYY-MM-DD/analysis-log.md` and any existing `reports/YYYY-MM-DD/07-cicd-infrastructure.md` files.
@@ -186,7 +186,7 @@ Detailed explanation of how to restructure the pipeline or Dockerfile...
 ## Mandatory Report Structure (`reports/YYYY-MM-DD/07-cicd-infrastructure.md`)
 
 ```markdown
-# DevOps, Containerization & CI/CD Pipeline Audit Report (Prompt 7)
+# DevOps, Containerization & CI/CD Pipeline Audit Report (Skill 7)
 
 ## Executive Summary
 Evaluation of container security, multi-stage build efficiency, CI/CD pipeline velocity, secret handling, and Kubernetes readiness.
@@ -232,7 +232,7 @@ Calculated DevOps Maturity Rating (e.g., 7.5/10 - Docker Multi-Stage Optimizatio
 ## Log Specification (`reports/YYYY-MM-DD/analysis-log.md`)
 
 ```markdown
-## Execution Log - Prompt 7 (DevOps & CI/CD Audit)
+## Execution Log - Skill 7 (DevOps & CI/CD Audit)
 - **Date**: YYYY-MM-DD
 - **Git Commit Hash**: `[commit_hash]`
 - **Branch**: `[branch_name]`
@@ -257,3 +257,17 @@ Calculated DevOps Maturity Rating (e.g., 7.5/10 - Docker Multi-Stage Optimizatio
 3. **No Code Mutation**: Only output report markdown files and update analysis logs.
 4. **Quantifiable DevOps Metrics**: Every finding MUST include estimations for build time reduction, image size reduction, and security ROI.
 5. **Persistence Integrity**: Save and commit findings to disk immediately upon discovery.
+
+---
+
+## Skill Analysis & Design Notes (Editorial)
+
+> **Maintainers only.** This section is editorial context and is NOT part of the executable audit instructions. The executing model MUST ignore it when running the skill.
+
+**Purpose.** DevOps/container/CI-CD audit converted from the Node.js baseline to a PHP-FPM + Composer world, keeping all framework-neutral supply-chain rules intact.
+
+**Key design decisions.** (1) The multi-stage Dockerfile baseline is now a Composer build stage feeding a `php:8.3-fpm-alpine` runtime with `composer install --no-dev --optimize-autoloader --classmap-authoritative` — the direct translation of the source's `npm ci && npm prune --omit=dev`; (2) `USER www-data` and digest-pinned base images preserve the non-root + no-`latest` rules; (3) `composer audit` replaces `npm audit`, and PHPStan/Psalm gates replace the TypeScript SAST expectations; (4) PHP-runtime hardening is new and specific: `opcache.validate_timestamps=0`, `expose_php=Off`, no xdebug in production images; (5) action SHA pinning, `permissions:` scoping, Cosign/SBOM, and K8s probe/resource guidance are carried over verbatim because they are stack-neutral.
+
+**Coverage & limitations.** The Dockerfile healthcheck (wget on port 8080) must be aligned with the actual FPM→web-server bridge; the `composer` builder image is not digest-pinned in the example; branch protection and artifact retention are not covered.
+
+**Recommended enhancements.** Pin the Composer builder image by digest; add a `php.ini` hardening checklist (memory_limit, max_execution_time, disable_functions) to the runtime section; and add branch-protection and image-retention policies.

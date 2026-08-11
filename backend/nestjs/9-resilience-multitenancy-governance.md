@@ -1,4 +1,4 @@
-# Prompt 9: NestJS Resilience Engineering, Multi-Tenancy Isolation & Data Governance Audit (Standardized Suite - Prompt 9 of 12) — Enhanced for DeepSeek-V4 Flash
+# Skill 9: NestJS Resilience Engineering, Multi-Tenancy Isolation & Data Governance Audit (Standardized Suite - Skill 9 of 12) — Enhanced for DeepSeek-V4 Flash
 
 ## Role
 You are a Principal Resilience Engineer, Multi-Tenancy Architect, Data Governance Specialist, and Fault Tolerance Lead.
@@ -23,9 +23,9 @@ You are operating inside a production-grade **NestJS + TypeScript** multi-tenant
 
 ---
 
-## Steps — Unified Execution Workflow (Standard Step Pipeline for Prompts 1 to 10)
+## Steps — Unified Execution Workflow (Standard Step Pipeline for Skills 1 to 10)
 
-To ensure consistency across all analysis prompts, you MUST follow this strict 7-phase execution lifecycle:
+To ensure consistency across all analysis skills, you MUST follow this strict 7-phase execution lifecycle:
 
 ### Phase 1: Workspace & Git Verification
 1. Check repository status:
@@ -37,7 +37,7 @@ To ensure consistency across all analysis prompts, you MUST follow this strict 7
 1. Determine the current date in `YYYY-MM-DD` format (e.g., `2026-08-06`).
 2. Create (or reuse) the per-day output directory `reports/YYYY-MM-DD/`. If it does not exist, create it immediately.
 3. Initialize or locate the master log file: `reports/YYYY-MM-DD/analysis-log.md`.
-4. Set the target report file path for Prompt 9: `reports/YYYY-MM-DD/09-resilience-multitenancy-governance.md`.
+4. Set the target report file path for Skill 9: `reports/YYYY-MM-DD/09-resilience-multitenancy-governance.md`.
 
 ### Phase 3: Incremental State & Resume Check
 1. Open `reports/YYYY-MM-DD/analysis-log.md` and any existing `reports/YYYY-MM-DD/09-resilience-multitenancy-governance.md` files.
@@ -209,7 +209,7 @@ Detailed explanation of how to encapsulate tenant context, apply circuit breaker
 ## Mandatory Report Structure (`reports/YYYY-MM-DD/09-resilience-multitenancy-governance.md`)
 
 ```markdown
-# Resilience Engineering, Multi-Tenancy & Data Governance Audit Report (Prompt 9)
+# Resilience Engineering, Multi-Tenancy & Data Governance Audit Report (Skill 9)
 
 ## Executive Summary
 Evaluation of fault tolerance, circuit breakers, multi-tenant isolation safety, immutable audit trails, and PII masking protocols.
@@ -256,7 +256,7 @@ Calculated System Stability Rating (e.g., 7.8/10 - Circuit Breakers & Multi-Tena
 ## Log Specification (`reports/YYYY-MM-DD/analysis-log.md`)
 
 ```markdown
-## Execution Log - Prompt 9 (Resilience, Multi-Tenancy & Governance)
+## Execution Log - Skill 9 (Resilience, Multi-Tenancy & Governance)
 - **Date**: YYYY-MM-DD
 - **Git Commit Hash**: `[commit_hash]`
 - **Branch**: `[branch_name]`
@@ -280,3 +280,17 @@ Calculated System Stability Rating (e.g., 7.8/10 - Circuit Breakers & Multi-Tena
 3. **No Code Mutation**: Only output report markdown files and update analysis logs.
 4. **Quantifiable Metrics**: Every finding MUST include estimations for availability ROI, multi-tenant risk mitigation, and compliance readiness.
 5. **Persistence Integrity**: Save and commit findings to disk immediately upon discovery.
+
+---
+
+## Skill Analysis & Design Notes (Editorial)
+
+> **Maintainers only.** This section is editorial context and is NOT part of the executable audit instructions. The executing model MUST ignore it when running the skill.
+
+**Purpose.** Focuses on the two failure modes that end careers: cross-tenant data leakage and cascading outages — plus the governance layer (audit trails, PII masking, retention) that regulators audit.
+
+**Key design decisions.** (1) The tenant-derivation rule is non-negotiable: tenant identity comes only from the verified token, and client-supplied `tenantId` is a Critical finding (IDOR/BOLA); (2) the `AsyncLocalStorage` baseline with explicit enter/exit and the `getStore() ?? {}` denial pattern shows how context must be carried — and how to fail closed when it's missing; (3) tenant-namespaced cache keys (e.g., `grc:{tenantId}:{key}`) close the cache-poisoning vector; (4) resilience guidance (circuit breakers, throttling, graceful shutdown) plus immutable/hashed-chain audit logging round out the picture.
+
+**Coverage & limitations.** AsyncLocalStorage leakage across timers/workers is genuinely hard to verify statically — the skill names the risk but offers no test pattern for it; the hashed-chain audit trail has no concrete implementation sketch; per-tenant rate-limit budgets are not addressed.
+
+**Recommended enhancements.** Add an explicit ALS leak test pattern (spawn a timer/worker, assert context absence); include a hash-chain audit-log code example; and extend throttling guidance to per-tenant budgets.

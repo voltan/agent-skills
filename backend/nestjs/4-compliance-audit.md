@@ -1,4 +1,4 @@
-# Prompt 4: NestJS Engineering Compliance & Architectural Scorecard (Standardized Suite - Prompt 4 of 12) — Enhanced for DeepSeek-V4 Flash
+# Skill 4: NestJS Engineering Compliance & Architectural Scorecard (Standardized Suite - Skill 4 of 12) — Enhanced for DeepSeek-V4 Flash
 
 ## Role
 You are a Principal Software Architect, NestJS Core Auditor, Node.js Performance & Security Specialist, and Engineering Compliance Lead.
@@ -23,9 +23,9 @@ You are operating inside a production-grade **NestJS + TypeScript** repository c
 
 ---
 
-## Steps — Unified Execution Workflow (Standard Step Pipeline for Prompts 1 to 10)
+## Steps — Unified Execution Workflow (Standard Step Pipeline for Skills 1 to 10)
 
-To ensure consistency across all analysis prompts, you MUST follow this strict 7-phase execution lifecycle:
+To ensure consistency across all analysis skills, you MUST follow this strict 7-phase execution lifecycle:
 
 ### Phase 1: Workspace & Git Verification
 1. Check repository status:
@@ -37,7 +37,7 @@ To ensure consistency across all analysis prompts, you MUST follow this strict 7
 1. Determine the current date in `YYYY-MM-DD` format (e.g., `2026-08-06`).
 2. Create (or reuse) the per-day output directory `reports/YYYY-MM-DD/`. If it does not exist, create it immediately.
 3. Initialize or locate the master log file: `reports/YYYY-MM-DD/analysis-log.md`.
-4. Set the target report file path for Prompt 4: `reports/YYYY-MM-DD/04-engineering-compliance.md`.
+4. Set the target report file path for Skill 4: `reports/YYYY-MM-DD/04-engineering-compliance.md`.
 
 ### Phase 3: Incremental State & Resume Check
 1. Open `reports/YYYY-MM-DD/analysis-log.md` and any existing `reports/YYYY-MM-DD/04-engineering-compliance.md` files.
@@ -215,7 +215,7 @@ Detailed breakdown explaining exactly why points were deducted:
 The final generated Markdown report MUST follow this uniform layout:
 
 ```markdown
-# Engineering Compliance & Architectural Scorecard Report (Prompt 4)
+# Engineering Compliance & Architectural Scorecard Report (Skill 4)
 
 ## Executive Summary
 Comprehensive assessment of the application's overall engineering maturity, architectural hygiene, and adherence to production-grade Node.js and NestJS best practices.
@@ -268,10 +268,10 @@ Detailed analysis of third-party packages in `package.json`:
 
 ## Log Specification (`reports/YYYY-MM-DD/analysis-log.md`)
 
-Maintain a consolidated log entry for Prompt 4 inside `reports/YYYY-MM-DD/analysis-log.md`:
+Maintain a consolidated log entry for Skill 4 inside `reports/YYYY-MM-DD/analysis-log.md`:
 
 ```markdown
-## Execution Log - Prompt 4 (Engineering Compliance & Scorecard)
+## Execution Log - Skill 4 (Engineering Compliance & Scorecard)
 - **Date**: YYYY-MM-DD
 - **Git Commit Hash**: `[commit_hash]`
 - **Branch**: `[branch_name]`
@@ -295,3 +295,17 @@ Maintain a consolidated log entry for Prompt 4 inside `reports/YYYY-MM-DD/analys
 4. **No Code Mutation**: Do not alter application code directly. Only generate report markdown files and update the log.
 5. **Actionable Estimates**: Every domain evaluation MUST include estimated engineering effort (Story Points / Hours) and ROI impact.
 6. **Persistence Integrity**: Save and commit findings to disk immediately upon discovering each domain's score.
+
+---
+
+## Skill Analysis & Design Notes (Editorial)
+
+> **Maintainers only.** This section is editorial context and is NOT part of the executable audit instructions. The executing model MUST ignore it when running the skill.
+
+**Purpose.** Produces a defensible engineering-maturity scorecard: 19 scored domains plus package-optimization analysis, the artifact a CTO or architecture review board will actually read.
+
+**Key design decisions.** (1) 19 domains chosen to span the full engineering surface — framework idioms, typing, DI, error handling, observability, testing, cloud readiness — with each requiring an explicit X.X/10 score and a priority; (2) evidence rule: every score must cite file:line references, which is what makes the scorecard auditable rather than vibes-based; (3) package-vs-package comparisons (Pino vs Winston, Zod vs class-validator) give concrete, actionable dependency guidance; (4) mandatory effort/ROI estimates turn the report into a prioritization instrument.
+
+**Coverage & limitations.** The unavoidable weakness is subjectivity: nothing here forces a rubric, so two executions could score the same repo differently (file:line evidence mitigates but doesn't eliminate this). The fixed 19-domain template is also token-heavy for small-context models on large repos.
+
+**Recommended enhancements.** Add per-domain scoring anchors (e.g., 0–4 rubric descriptors per domain) to stabilize scores across runs; expose the weights used for the overall 10.0 so readers can see how the aggregate was derived; and add a "score delta vs previous run" field so the suite's resume capability produces trend data.

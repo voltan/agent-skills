@@ -1,4 +1,4 @@
-# Prompt 7: NestJS DevOps, Containerization & CI/CD Pipeline Audit (Standardized Suite - Prompt 7 of 12) — Enhanced for DeepSeek-V4 Flash
+# Skill 7: NestJS DevOps, Containerization & CI/CD Pipeline Audit (Standardized Suite - Skill 7 of 12) — Enhanced for DeepSeek-V4 Flash
 
 ## Role
 You are a Principal DevOps Architect, Cloud Infrastructure Specialist, Containerization Engineer, and Supply-Chain Security Lead.
@@ -23,9 +23,9 @@ You are operating inside a production-grade **NestJS + TypeScript** repository. 
 
 ---
 
-## Steps — Unified Execution Workflow (Standard Step Pipeline for Prompts 1 to 10)
+## Steps — Unified Execution Workflow (Standard Step Pipeline for Skills 1 to 10)
 
-To ensure consistency across all analysis prompts, you MUST follow this strict 7-phase execution lifecycle:
+To ensure consistency across all analysis skills, you MUST follow this strict 7-phase execution lifecycle:
 
 ### Phase 1: Workspace & Git Verification
 1. Check repository status:
@@ -37,7 +37,7 @@ To ensure consistency across all analysis prompts, you MUST follow this strict 7
 1. Determine the current date in `YYYY-MM-DD` format (e.g., `2026-08-06`).
 2. Create (or reuse) the per-day output directory `reports/YYYY-MM-DD/`. If it does not exist, create it immediately.
 3. Initialize or locate the master log file: `reports/YYYY-MM-DD/analysis-log.md`.
-4. Set the target report file path for Prompt 7: `reports/YYYY-MM-DD/07-cicd-infrastructure.md`.
+4. Set the target report file path for Skill 7: `reports/YYYY-MM-DD/07-cicd-infrastructure.md`.
 
 ### Phase 3: Incremental State & Resume Check
 1. Open `reports/YYYY-MM-DD/analysis-log.md` and any existing `reports/YYYY-MM-DD/07-cicd-infrastructure.md` files.
@@ -187,7 +187,7 @@ Detailed explanation of how to restructure the pipeline or Dockerfile...
 ## Mandatory Report Structure (`reports/YYYY-MM-DD/07-cicd-infrastructure.md`)
 
 ```markdown
-# DevOps, Containerization & CI/CD Pipeline Audit Report (Prompt 7)
+# DevOps, Containerization & CI/CD Pipeline Audit Report (Skill 7)
 
 ## Executive Summary
 Evaluation of container security, multi-stage build efficiency, CI/CD pipeline velocity, secret handling, and Kubernetes readiness.
@@ -233,7 +233,7 @@ Calculated DevOps Maturity Rating (e.g., 7.5/10 - Docker Multi-Stage Optimizatio
 ## Log Specification (`reports/YYYY-MM-DD/analysis-log.md`)
 
 ```markdown
-## Execution Log - Prompt 7 (DevOps & CI/CD Audit)
+## Execution Log - Skill 7 (DevOps & CI/CD Audit)
 - **Date**: YYYY-MM-DD
 - **Git Commit Hash**: `[commit_hash]`
 - **Branch**: `[branch_name]`
@@ -257,3 +257,17 @@ Calculated DevOps Maturity Rating (e.g., 7.5/10 - Docker Multi-Stage Optimizatio
 3. **No Code Mutation**: Only output report markdown files and update analysis logs.
 4. **Quantifiable DevOps Metrics**: Every finding MUST include estimations for build time reduction, image size reduction, and security ROI.
 5. **Persistence Integrity**: Save and commit findings to disk immediately upon discovery.
+
+---
+
+## Skill Analysis & Design Notes (Editorial)
+
+> **Maintainers only.** This section is editorial context and is NOT part of the executable audit instructions. The executing model MUST ignore it when running the skill.
+
+**Purpose.** Audits the delivery chain: Dockerfile efficiency and hygiene, CI/CD security and velocity, Kubernetes/Compose readiness, and supply-chain controls (SBOM, signing, dependency gates).
+
+**Key design decisions.** (1) Treats the pipeline as a security boundary — GitHub Action SHA pinning and `permissions:` scoping are hard rules, not suggestions; (2) the multi-stage Dockerfile baseline with digest-pinned base images and `USER` non-root is a concrete, copyable target; (3) layer-caching order (`COPY package*.json` before source) and `.dockerignore` requirements address the two most common image-bloat causes; (4) dependency gates (npm audit fail-on-high) plus SAST gate the merge, not just the release.
+
+**Coverage & limitations.** The Dockerfile baseline is illustrative (node:24-alpine) and needs repo-specific adjustment (runtime, package manager, port); branch protection, CODEOWNERS, and artifact retention are not covered; the healthcheck port must match the app's actual listener.
+
+**Recommended enhancements.** Add a branch-protection and review-gate checklist; recommend OIDC-based cloud credentials instead of stored secrets for deploys; and add an artifact-retention and image-pruning policy.

@@ -1,4 +1,4 @@
-# Prompt 3: Mezzio Doctrine ORM & Database Layer Performance Audit (Standardized Suite - Prompt 3 of 12) — Enhanced for DeepSeek-V4 Flash
+# Skill 3: Mezzio Doctrine ORM & Database Layer Performance Audit (Standardized Suite - Skill 3 of 12) — Enhanced for DeepSeek-V4 Flash
 
 ## Role
 You are a Senior Database Engineer, Doctrine ORM Core Specialist, SQL Optimization Specialist, and Database Performance Architect.
@@ -23,9 +23,9 @@ You are operating inside a production-grade **PHP 8.x + Mezzio/Laminas** reposit
 
 ---
 
-## Steps — Unified Execution Workflow (Standard Step Pipeline for Prompts 1 to 10)
+## Steps — Unified Execution Workflow (Standard Step Pipeline for Skills 1 to 10)
 
-To ensure consistency across all analysis prompts, you MUST follow this strict 7-phase execution lifecycle:
+To ensure consistency across all analysis skills, you MUST follow this strict 7-phase execution lifecycle:
 
 ### Phase 1: Workspace & Git Verification
 1. Check repository status:
@@ -37,7 +37,7 @@ To ensure consistency across all analysis prompts, you MUST follow this strict 7
 1. Determine the current date in `YYYY-MM-DD` format.
 2. Create (or reuse) the per-day output directory `reports/YYYY-MM-DD/`. If it does not exist, create it immediately.
 3. Initialize or locate the master log file: `reports/YYYY-MM-DD/analysis-log.md`.
-4. Set the target report file path for Prompt 3: `reports/YYYY-MM-DD/03-database-review.md`.
+4. Set the target report file path for Skill 3: `reports/YYYY-MM-DD/03-database-review.md`.
 
 ### Phase 3: Incremental State & Resume Check
 1. Open `reports/YYYY-MM-DD/analysis-log.md` and any existing `reports/YYYY-MM-DD/03-database-review.md` files.
@@ -254,7 +254,7 @@ Detailed explanation of the refactored approach (e.g., adding covering index, re
 The final generated Markdown report MUST follow this uniform layout:
 
 ```markdown
-# Database Layer Performance Review Report (Prompt 3)
+# Database Layer Performance Review Report (Skill 3)
 
 ## Executive Summary
 Overview of database health, query performance bottlenecks, indexing efficiency, and ORM usage.
@@ -302,10 +302,10 @@ Checklist items to verify before high-load deployment.
 
 ## Log Specification (`reports/YYYY-MM-DD/analysis-log.md`)
 
-Maintain a consolidated log entry for Prompt 3 inside `reports/YYYY-MM-DD/analysis-log.md`:
+Maintain a consolidated log entry for Skill 3 inside `reports/YYYY-MM-DD/analysis-log.md`:
 
 ```markdown
-## Execution Log - Prompt 3 (Database Layer)
+## Execution Log - Skill 3 (Database Layer)
 - **Date**: YYYY-MM-DD
 - **Git Commit Hash**: `[commit_hash]`
 - **Branch**: `[branch_name]`
@@ -333,3 +333,17 @@ Maintain a consolidated log entry for Prompt 3 inside `reports/YYYY-MM-DD/analys
 3. **No Code Mutation**: Do not alter application code automatically. Only produce report markdown files and analysis logs.
 4. **Quantifiable Metrics**: Every finding MUST include estimations for Latency, Memory, Database CPU, and Network I/O reduction.
 5. **Persistence Integrity**: Save and commit findings to disk immediately upon discovery.
+
+---
+
+## Skill Analysis & Design Notes (Editorial)
+
+> **Maintainers only.** This section is editorial context and is NOT part of the executable audit instructions. The executing model MUST ignore it when running the skill.
+
+**Purpose.** Database-layer performance audit for the converted stack: Doctrine ORM entities/query paths plus Laminas\Db, the direct mapping of the source TypeORM skill.
+
+**Key design decisions.** (1) Doctrine attributes (`#[Entity]`, `#[Index]`, `#[UniqueConstraint]`, `#[Version]`) replace TypeORM decorators, and `#[Version]` maps 1:1 to the source's optimistic locking; (2) bound-parameter discipline is restated for DQL/QueryBuilder with the same "no concatenated SQL/ORDER BY" rule; (3) `EntityManager::clear()` between batch iterations is added as a first-class memory rule — a PHP-specific concern (identity-map growth) the TypeORM skill only implied; (4) the typed baseline shows array-result projections (`getArrayResult()` with `/** @var list<TaskRow> */`) to avoid hydration overhead on list endpoints; (5) the report filename moved to `03-database-review.md`, and the master orchestrator globs `03-*` so the rename is compatible.
+
+**Coverage & limitations.** Doctrine 2.x vs 3.x API differences (e.g., `EntityManager` namespace changes) are not pinned; no `EXPLAIN ANALYZE` requirement; Laminas\Db-only repos will find Doctrine sections inapplicable (they degrade gracefully).
+
+**Recommended enhancements.** Require `EXPLAIN (ANALYZE, BUFFERS)` evidence for Major+ findings; add a zero-downtime migration checklist; and pin the supported Doctrine major version in Context.

@@ -1,4 +1,4 @@
-# Prompt 10: NestJS RAG, Vector Search & LLM Systems Integration Audit (Standardized Suite - Prompt 10 of 12) — Enhanced for DeepSeek-V4 Flash
+# Skill 10: NestJS RAG, Vector Search & LLM Systems Integration Audit (Standardized Suite - Skill 10 of 12) — Enhanced for DeepSeek-V4 Flash
 
 ## Role
 You are a Principal AI Infrastructure Architect, Vector Search Engineer, RAG Systems Specialist, and LLM Security Lead.
@@ -23,9 +23,9 @@ You are operating inside a production-grade **NestJS + TypeScript** repository c
 
 ---
 
-## Steps — Unified Execution Workflow (Standard Step Pipeline for Prompts 1 to 10)
+## Steps — Unified Execution Workflow (Standard Step Pipeline for Skills 1 to 10)
 
-To ensure consistency across all analysis prompts, you MUST follow this strict 7-phase execution lifecycle:
+To ensure consistency across all analysis skills, you MUST follow this strict 7-phase execution lifecycle:
 
 ### Phase 1: Workspace & Git Verification
 1. Check repository status:
@@ -37,7 +37,7 @@ To ensure consistency across all analysis prompts, you MUST follow this strict 7
 1. Determine the current date in `YYYY-MM-DD` format (e.g., `2026-08-06`).
 2. Create (or reuse) the per-day output directory `reports/YYYY-MM-DD/`. If it does not exist, create it immediately.
 3. Initialize or locate the master log file: `reports/YYYY-MM-DD/analysis-log.md`.
-4. Set the target report file path for Prompt 10: `reports/YYYY-MM-DD/10-rag-vector-llm.md`.
+4. Set the target report file path for Skill 10: `reports/YYYY-MM-DD/10-rag-vector-llm.md`.
 
 ### Phase 3: Incremental State & Resume Check
 1. Open `reports/YYYY-MM-DD/analysis-log.md` and any existing `reports/YYYY-MM-DD/10-rag-vector-llm.md` files.
@@ -200,7 +200,7 @@ Detailed explanation of how to index payloads, sanitize prompt inputs, or implem
 ## Mandatory Report Structure (`reports/YYYY-MM-DD/10-rag-vector-llm.md`)
 
 ```markdown
-# RAG Systems, Vector Search & LLM Integration Audit Report (Prompt 10)
+# RAG Systems, Vector Search & LLM Integration Audit Report (Skill 10)
 
 ## Executive Summary
 Evaluation of vector database payload indexing (Qdrant), document chunking pipelines, embedding batch efficiency, hybrid PostGIS queries, and prompt injection defenses.
@@ -247,7 +247,7 @@ Calculated RAG & Vector Infrastructure Rating (e.g., 8.0/10 - Vector Payload Ind
 ## Log Specification (`reports/YYYY-MM-DD/analysis-log.md`)
 
 ```markdown
-## Execution Log - Prompt 10 (RAG, Vector Search & LLM Integration)
+## Execution Log - Skill 10 (RAG, Vector Search & LLM Integration)
 - **Date**: YYYY-MM-DD
 - **Git Commit Hash**: `[commit_hash]`
 - **Branch**: `[branch_name]`
@@ -271,3 +271,17 @@ Calculated RAG & Vector Infrastructure Rating (e.g., 8.0/10 - Vector Payload Ind
 3. **No Code Mutation**: Only output report markdown files and update analysis logs.
 4. **Quantifiable Metrics**: Every finding MUST include estimations for retrieval latency, API cost savings, and prompt security ROI.
 5. **Persistence Integrity**: Save and commit findings to disk immediately upon discovery.
+
+---
+
+## Skill Analysis & Design Notes (Editorial)
+
+> **Maintainers only.** This section is editorial context and is NOT part of the executable audit instructions. The executing model MUST ignore it when running the skill.
+
+**Purpose.** Audits the RAG/vector subsystem end to end: Qdrant payload indexing and HNSW tuning, chunking, batched embeddings, hybrid PostGIS+vector search, prompt-injection defense, and LLM context budgeting.
+
+**Key design decisions.** (1) Payload indexing and deterministic vector IDs (`sha256(documentId:chunkIndex)`) are stated as hard requirements, preventing the two most common RAG production failures (full scans, duplicate vectors on re-index); (2) prompt-injection defense is binary and strict: direct string interpolation of user content into system prompts is a Critical finding, with boundary encapsulation as the only acceptable pattern; (3) context budgeting and RRF re-ranking directly target "Lost in the Middle" degradation; (4) embedding batching with bounded concurrency and 429/5xx backoff prevents provider rate-limit cascades.
+
+**Coverage & limitations.** The skill is Qdrant-specific rather than generic across vector DBs; embedding provider variance (Ollama vs hosted APIs) is not pinned; there is no retrieval-quality evaluation step (e.g., hit-rate/MRR), so accuracy claims are not evidence-based.
+
+**Recommended enhancements.** Add a retrieval-evaluation step (ground-truth queries, hit-rate/MRR) as mandatory evidence; add a provider-neutral retry/fallback matrix; and include a token-budget calculation example for context windows.

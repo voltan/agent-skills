@@ -1,4 +1,4 @@
-# Prompt 8: Mezzio Performance, Async Queues, Data Pipelines & Clean Architecture Audit (Standardized Suite - Prompt 8 of 12) — Enhanced for DeepSeek-V4 Flash
+# Skill 8: Mezzio Performance, Async Queues, Data Pipelines & Clean Architecture Audit (Standardized Suite - Skill 8 of 12) — Enhanced for DeepSeek-V4 Flash
 
 ## Role
 You are a Principal Backend Performance Architect, Async Systems Engineer, Data Pipeline Specialist, and DDD/Clean Architecture Lead.
@@ -23,9 +23,9 @@ You are operating inside a production-grade **PHP 8.x + Mezzio/Laminas** reposit
 
 ---
 
-## Steps — Unified Execution Workflow (Standard Step Pipeline for Prompts 1 to 10)
+## Steps — Unified Execution Workflow (Standard Step Pipeline for Skills 1 to 10)
 
-To ensure consistency across all analysis prompts, you MUST follow this strict 7-phase execution lifecycle:
+To ensure consistency across all analysis skills, you MUST follow this strict 7-phase execution lifecycle:
 
 ### Phase 1: Workspace & Git Verification
 1. Check repository status:
@@ -37,7 +37,7 @@ To ensure consistency across all analysis prompts, you MUST follow this strict 7
 1. Determine the current date in `YYYY-MM-DD` format.
 2. Create (or reuse) the per-day output directory `reports/YYYY-MM-DD/`. If it does not exist, create it immediately.
 3. Initialize or locate the master log file: `reports/YYYY-MM-DD/analysis-log.md`.
-4. Set the target report file path for Prompt 8: `reports/YYYY-MM-DD/08-performance-async-architecture.md`.
+4. Set the target report file path for Skill 8: `reports/YYYY-MM-DD/08-performance-async-architecture.md`.
 
 ### Phase 3: Incremental State & Resume Check
 1. Open `reports/YYYY-MM-DD/analysis-log.md` and any existing `reports/YYYY-MM-DD/08-performance-async-architecture.md` files.
@@ -223,7 +223,7 @@ Detailed explanation of how to decouple, stream, cache, or isolate the module...
 ## Mandatory Report Structure (`reports/YYYY-MM-DD/08-performance-async-architecture.md`)
 
 ```markdown
-# Performance, Async Workflows & Clean Architecture Audit Report (Prompt 8)
+# Performance, Async Workflows & Clean Architecture Audit Report (Skill 8)
 
 ## Executive Summary
 Evaluation of background queue resiliency, request-path execution safety, vector/spatial data pipeline efficiency, and modular boundaries.
@@ -270,7 +270,7 @@ Calculated System Efficiency Rating (e.g., 7.1/10 - Queue Idempotency & Clean Ar
 ## Log Specification (`reports/YYYY-MM-DD/analysis-log.md`)
 
 ```markdown
-## Execution Log - Prompt 8 (Performance, Async & Clean Architecture)
+## Execution Log - Skill 8 (Performance, Async & Clean Architecture)
 - **Date**: YYYY-MM-DD
 - **Git Commit Hash**: `[commit_hash]`
 - **Branch**: `[branch_name]`
@@ -295,3 +295,17 @@ Calculated System Efficiency Rating (e.g., 7.1/10 - Queue Idempotency & Clean Ar
 3. **No Code Mutation**: Only output report markdown files and update analysis logs.
 4. **Quantifiable Metrics**: Every finding MUST include estimations for throughput, memory reduction, and maintainability ROI.
 5. **Persistence Integrity**: Save and commit findings to disk immediately upon discovery.
+
+---
+
+## Skill Analysis & Design Notes (Editorial)
+
+> **Maintainers only.** This section is editorial context and is NOT part of the executable audit instructions. The executing model MUST ignore it when running the skill.
+
+**Purpose.** Async/queue/pipeline audit converted from BullMQ to the PHP broker landscape (php-amqplib / Enqueue / Symfony Messenger), plus Redis caching, memory behavior, and DDD boundaries.
+
+**Key design decisions.** (1) Deterministic job IDs (`sha256(documentId:chunkIndex)`) and idempotent handlers carry over as the idempotency contract; (2) AMQP ACK/NACK + dead-letter-exchange guidance replaces BullMQ's retry options — the typed `IngestionConsumer` baseline shows ack-vs-nack(requeue:false) with a rethrow so supervisors see failures; (3) `EntityManager::clear()` in batch loops is elevated to a first-class rule — identity-map memory growth is the PHP equivalent of the Node heap-leak vectors; (4) cron guidance moves to laminas-cli/symfony console commands; (5) cache-stampede protection and tenant-namespaced Redis keys remain unchanged.
+
+**Coverage & limitations.** AMQP retry/dead-letter semantics vary by broker implementation, so the baseline may need transport-specific adjustments; Messenger-based repos must translate ACK/NACK to `Transport::reject()` semantics; queue-depth/age metrics are not required; the vector/spatial sections apply only to RAG-capable repos.
+
+**Recommended enhancements.** Add queue depth/age/failure metrics to required evidence; document poison-message handling (max attempts → DLQ → alert); and add a consumer-concurrency backpressure calculation example.

@@ -1,4 +1,4 @@
-# Prompt 2: Mezzio Architecture, Clean Code & Performance Optimization Audit (Standardized Suite - Prompt 2 of 12) — Enhanced for DeepSeek-V4 Flash
+# Skill 2: Mezzio Architecture, Clean Code & Performance Optimization Audit (Standardized Suite - Skill 2 of 12) — Enhanced for DeepSeek-V4 Flash
 
 ## Role
 You are a Senior Software Architect, Mezzio/Laminas Core Specialist, PHP Performance Engineer, Clean Code Consultant, and Domain-Driven Design (DDD) Expert.
@@ -23,9 +23,9 @@ You are operating inside a production-grade **PHP 8.x + Mezzio/Laminas** reposit
 
 ---
 
-## Steps — Unified Execution Workflow (Standard Step Pipeline for Prompts 1 to 10)
+## Steps — Unified Execution Workflow (Standard Step Pipeline for Skills 1 to 10)
 
-To ensure consistency across all analysis prompts, you MUST follow this strict 7-phase execution lifecycle:
+To ensure consistency across all analysis skills, you MUST follow this strict 7-phase execution lifecycle:
 
 ### Phase 1: Workspace & Git Verification
 1. Check repository status:
@@ -37,7 +37,7 @@ To ensure consistency across all analysis prompts, you MUST follow this strict 7
 1. Determine the current date in `YYYY-MM-DD` format.
 2. Create (or reuse) the per-day output directory `reports/YYYY-MM-DD/`. If it does not exist, create it immediately.
 3. Initialize or locate the master log file: `reports/YYYY-MM-DD/analysis-log.md`.
-4. Set the target report file path for Prompt 2: `reports/YYYY-MM-DD/02-architecture-performance-review.md`.
+4. Set the target report file path for Skill 2: `reports/YYYY-MM-DD/02-architecture-performance-review.md`.
 
 ### Phase 3: Incremental State & Resume Check
 1. Open `reports/YYYY-MM-DD/analysis-log.md` and any existing `reports/YYYY-MM-DD/02-architecture-performance-review.md` files.
@@ -271,7 +271,7 @@ Step-by-step description of the recommended refactored architecture...
 The final generated Markdown report MUST follow this uniform layout:
 
 ```markdown
-# Architecture, Clean Code & Performance Review Report (Prompt 2)
+# Architecture, Clean Code & Performance Review Report (Skill 2)
 
 ## Executive Summary
 Comprehensive summary of architectural health, performance bottlenecks, and code quality.
@@ -323,10 +323,10 @@ Checklist items to verify during the next development cycle.
 
 ## Log Specification (`reports/YYYY-MM-DD/analysis-log.md`)
 
-Maintain a consolidated log entry for Prompt 2 inside `reports/YYYY-MM-DD/analysis-log.md`:
+Maintain a consolidated log entry for Skill 2 inside `reports/YYYY-MM-DD/analysis-log.md`:
 
 ```markdown
-## Execution Log - Prompt 2 (Architecture & Performance)
+## Execution Log - Skill 2 (Architecture & Performance)
 - **Date**: YYYY-MM-DD
 - **Git Commit Hash**: `[commit_hash]`
 - **Branch**: `[branch_name]`
@@ -354,3 +354,17 @@ Maintain a consolidated log entry for Prompt 2 inside `reports/YYYY-MM-DD/analys
 3. **No Code Mutation**: Do not alter application code automatically. Only output report markdown files and analysis logs.
 4. **Quantifiable Analysis**: Every finding must explain the *Expected Improvement* across Performance, Maintainability, Scalability, and Complexity.
 5. **Persistence Integrity**: Save and commit findings to disk immediately upon discovery.
+
+---
+
+## Skill Analysis & Design Notes (Editorial)
+
+> **Maintainers only.** This section is editorial context and is NOT part of the executable audit instructions. The executing model MUST ignore it when running the skill.
+
+**Purpose.** Architecture, clean-code, and performance audit of a Mezzio application — the converted counterpart of the source NestJS skill, re-expressed for PSR-15 layering and PHP runtime realities.
+
+**Key design decisions.** (1) Handler → Service → Repository layering replaces Controller → Service → Repository, with the same "handlers stay thin" rule; (2) the "event loop blocking" analysis of the source becomes request-path latency analysis — correct because plain PHP-FPM has no shared event loop, so the real risks are heavy CPU work per request and memory growth in long-running consumers; (3) OPcache configuration and `EntityManager::clear()` in batch loops replace Node's GC concerns; (4) `Promise.all` guidance becomes Guzzle concurrent requests / PHP fibers for parallel external calls; (5) complexity budgets (100/500/4/3) and quantifiable-impact requirements are carried over unchanged.
+
+**Coverage & limitations.** No profiling step is mandated, so latency claims need executor-supplied evidence; Swoole/Octane deployments shift the memory analysis (shared workers), which the skill mentions but does not fully separate; complexity budgets assume a standard autoload layout.
+
+**Recommended enhancements.** Add a profiling mandate (Blackfire.io / Tideways / Xdebug traces) for every Critical/Major perf claim; include an explicit `opcache.validate_timestamps=0` + `realpath_cache` production check; and split Swoole/Octane memory guidance into its own subsection.

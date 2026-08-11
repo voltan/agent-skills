@@ -1,4 +1,4 @@
-# Prompt 12: Comprehensive Targeted Security & Compliance Audit (PHP/Laminas, NestJS & Vue.js) (Standardized Suite - Prompt 12 of 12) — Enhanced for DeepSeek-V4 Flash
+# Skill 12: Comprehensive Targeted Security & Compliance Audit (PHP/Laminas, NestJS & Vue.js) (Standardized Suite - Skill 12 of 12) — Enhanced for DeepSeek-V4 Flash
 
 ## Role
 You are a Principal Enterprise Security Architect, DevSecOps Lead, and Lead Auditor certified in ISO/IEC 27001:2022, NIST SP 800-53 (Rev. 5), NIST CSF 2.0, and CIS Controls v8.
@@ -214,3 +214,17 @@ Step-by-step hardened design pattern...
 3. **Single Repository Boundary**: Analyze code strictly within the target project directory.
 4. **Directory Isolation**: Save reports strictly in `reports/compliance-security-audit-YYYY-MM-DD.md`.
 5. **No Code Mutation**: Output reports strictly in markdown format without mutating codebase files.
+
+---
+
+## Skill Analysis & Design Notes (Editorial)
+
+> **Maintainers only.** This section is editorial context and is NOT part of the executable audit instructions. The executing model MUST ignore it when running the skill.
+
+**Purpose.** The suite's compliance deep-dive: a single-repository audit across PHP (Laminas), NestJS, and Vue.js, mapped to ISO/IEC 27001:2022, NIST SP 800-53, NIST CSF 2.0, CIS v8, and OWASP — intended to run independently of the ten domain skills.
+
+**Key design decisions.** (1) Stack auto-detection from manifests (`composer.json`, `package.json`, `nest-cli.json`, `vite.config.ts`) means a subset repo is audited correctly without dead sections; (2) the exclusion boundary is explicit and strict — never scan `vendor/`/`node_modules`, audit only manifests + lockfiles, which keeps token use bounded; (3) per-stack standards are concrete (Laminas InputFilter + Db\Sql binding, Vue `v-html` + DOMPurify, NestJS ValidationPipe) rather than generic; (4) the compliance scorecard table (ISO/NIST/CIS/OWASP) gives regulators the artifact they expect.
+
+**Coverage & limitations.** Detection heuristics can miss legacy or mono-layout repos (e.g., nested `composer.json`, renamed directories); the Vue section assumes SFC builds; dependency license compliance is not checked.
+
+**Recommended enhancements.** Add a license-scan step (`composer licenses`, `license-checker`) to the dependency audit; verify framework version pinning as part of the fingerprint; and add a mono-repo layout detector (recursive manifest discovery).

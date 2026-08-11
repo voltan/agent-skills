@@ -1,4 +1,4 @@
-# Prompt 10: Mezzio RAG, Vector Search & LLM Systems Integration Audit (Standardized Suite - Prompt 10 of 12) — Enhanced for DeepSeek-V4 Flash
+# Skill 10: Mezzio RAG, Vector Search & LLM Systems Integration Audit (Standardized Suite - Skill 10 of 12) — Enhanced for DeepSeek-V4 Flash
 
 ## Role
 You are a Principal AI Infrastructure Architect, Vector Search Engineer, RAG Systems Specialist, and LLM Security Lead.
@@ -23,9 +23,9 @@ You are operating inside a production-grade **PHP 8.x + Mezzio/Laminas** reposit
 
 ---
 
-## Steps — Unified Execution Workflow (Standard Step Pipeline for Prompts 1 to 10)
+## Steps — Unified Execution Workflow (Standard Step Pipeline for Skills 1 to 10)
 
-To ensure consistency across all analysis prompts, you MUST follow this strict 7-phase execution lifecycle:
+To ensure consistency across all analysis skills, you MUST follow this strict 7-phase execution lifecycle:
 
 ### Phase 1: Workspace & Git Verification
 1. Check repository status:
@@ -37,7 +37,7 @@ To ensure consistency across all analysis prompts, you MUST follow this strict 7
 1. Determine the current date in `YYYY-MM-DD` format.
 2. Create (or reuse) the per-day output directory `reports/YYYY-MM-DD/`. If it does not exist, create it immediately.
 3. Initialize or locate the master log file: `reports/YYYY-MM-DD/analysis-log.md`.
-4. Set the target report file path for Prompt 10: `reports/YYYY-MM-DD/10-rag-vector-llm.md`.
+4. Set the target report file path for Skill 10: `reports/YYYY-MM-DD/10-rag-vector-llm.md`.
 
 ### Phase 3: Incremental State & Resume Check
 1. Open `reports/YYYY-MM-DD/analysis-log.md` and any existing `reports/YYYY-MM-DD/10-rag-vector-llm.md` files.
@@ -234,7 +234,7 @@ Detailed explanation of how to index payloads, sanitize prompt inputs, or implem
 ## Mandatory Report Structure (`reports/YYYY-MM-DD/10-rag-vector-llm.md`)
 
 ```markdown
-# RAG Systems, Vector Search & LLM Integration Audit Report (Prompt 10)
+# RAG Systems, Vector Search & LLM Integration Audit Report (Skill 10)
 
 ## Executive Summary
 Evaluation of vector database payload indexing (Qdrant), document chunking pipelines, embedding batch efficiency, hybrid PostGIS queries, and prompt injection defenses.
@@ -281,7 +281,7 @@ Calculated RAG & Vector Infrastructure Rating (e.g., 8.0/10 - Vector Payload Ind
 ## Log Specification (`reports/YYYY-MM-DD/analysis-log.md`)
 
 ```markdown
-## Execution Log - Prompt 10 (RAG, Vector Search & LLM Integration)
+## Execution Log - Skill 10 (RAG, Vector Search & LLM Integration)
 - **Date**: YYYY-MM-DD
 - **Git Commit Hash**: `[commit_hash]`
 - **Branch**: `[branch_name]`
@@ -306,3 +306,17 @@ Calculated RAG & Vector Infrastructure Rating (e.g., 8.0/10 - Vector Payload Ind
 3. **No Code Mutation**: Only output report markdown files and update analysis logs.
 4. **Quantifiable Metrics**: Every finding MUST include estimations for retrieval latency, API cost savings, and prompt security ROI.
 5. **Persistence Integrity**: Save and commit findings to disk immediately upon discovery.
+
+---
+
+## Skill Analysis & Design Notes (Editorial)
+
+> **Maintainers only.** This section is editorial context and is NOT part of the executable audit instructions. The executing model MUST ignore it when running the skill.
+
+**Purpose.** RAG/vector/LLM audit converted for PHP: the Qdrant PHP client, Guzzle/PSR-18 embedding batches, Doctrine-spatial hybrid search, prompt-injection defense, and context budgeting.
+
+**Key design decisions.** (1) The typed `VectorSearchQuery`/`ChunkPayload` DTOs and `min($limit, 50)` cap preserve the source's "no untyped data, bound everything" doctrine in PHP form; (2) deterministic vector IDs (`hash('sha256', ...)`) and payload-index requirements are carried over — the two fixes that prevent re-ingestion duplicates and full scans; (3) embedding batching with bounded concurrency and 429/5xx backoff maps Node's rate-limit concern onto Guzzle/PSR-18; (4) prompt-injection defense stays binary: raw string interpolation of user content into system prompts is a Critical finding; (5) the baseline assumes the official `qdrant/php` client, with the caveat documented that the PHP client ecosystem is less standardized than TypeScript's.
+
+**Coverage & limitations.** Qdrant-specific (not generic across vector DBs); the PHP client API (named args `search(collection:, vector:, ...)`) may drift between `qdrant/php` and community clients; no retrieval-quality evaluation step (hit-rate/MRR); LLM streaming consumption guidance is absent.
+
+**Recommended enhancements.** Add a retrieval-evaluation step (ground-truth queries, hit-rate/MRR) as mandatory evidence; document client-version pinning and an HTTP fallback path; add a token-budget calculation example.

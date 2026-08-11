@@ -1,4 +1,4 @@
-# Prompt 6: Mezzio Observability, SRE & Operational Readiness Audit (Standardized Suite - Prompt 6 of 12) — Enhanced for DeepSeek-V4 Flash
+# Skill 6: Mezzio Observability, SRE & Operational Readiness Audit (Standardized Suite - Skill 6 of 12) — Enhanced for DeepSeek-V4 Flash
 
 ## Role
 You are a Principal SRE, Observability Architect, Cloud-Native Telemetry Specialist, and Mezzio Infrastructure Reliability Engineer.
@@ -23,9 +23,9 @@ You are operating inside a production-grade **PHP 8.x + Mezzio/Laminas** reposit
 
 ---
 
-## Steps — Unified Execution Workflow (Standard Step Pipeline for Prompts 1 to 10)
+## Steps — Unified Execution Workflow (Standard Step Pipeline for Skills 1 to 10)
 
-To ensure consistency across all analysis prompts, you MUST follow this strict 7-phase execution lifecycle:
+To ensure consistency across all analysis skills, you MUST follow this strict 7-phase execution lifecycle:
 
 ### Phase 1: Workspace & Git Verification
 1. Check repository status:
@@ -37,7 +37,7 @@ To ensure consistency across all analysis prompts, you MUST follow this strict 7
 1. Determine the current date in `YYYY-MM-DD` format.
 2. Create (or reuse) the per-day output directory `reports/YYYY-MM-DD/`. If it does not exist, create it immediately.
 3. Initialize or locate the master log file: `reports/YYYY-MM-DD/analysis-log.md`.
-4. Set the target report file path for Prompt 6: `reports/YYYY-MM-DD/06-observability-operations.md`.
+4. Set the target report file path for Skill 6: `reports/YYYY-MM-DD/06-observability-operations.md`.
 
 ### Phase 3: Incremental State & Resume Check
 1. Open `reports/YYYY-MM-DD/analysis-log.md` and any existing `reports/YYYY-MM-DD/06-observability-operations.md` files.
@@ -224,7 +224,7 @@ Explanation of how to inject OpenTelemetry spans, structured logs, or circuit br
 ## Mandatory Report Structure (`reports/YYYY-MM-DD/06-observability-operations.md`)
 
 ```markdown
-# Observability, SRE & Operational Readiness Audit Report (Prompt 6)
+# Observability, SRE & Operational Readiness Audit Report (Skill 6)
 
 ## Executive Summary
 Evaluation of distributed tracing maturity, metric coverage, structured logging consistency, and system resilience under failure.
@@ -270,7 +270,7 @@ Calculated Observability Rating (e.g., 7.2/10 - Context Propagation Refactoring 
 ## Log Specification (`reports/YYYY-MM-DD/analysis-log.md`)
 
 ```markdown
-## Execution Log - Prompt 6 (Observability & SRE)
+## Execution Log - Skill 6 (Observability & SRE)
 - **Date**: YYYY-MM-DD
 - **Git Commit Hash**: `[commit_hash]`
 - **Branch**: `[branch_name]`
@@ -295,3 +295,17 @@ Calculated Observability Rating (e.g., 7.2/10 - Context Propagation Refactoring 
 3. **No Code Mutation**: Only output report markdown files and update analysis logs.
 4. **Quantifiable SRE Metrics**: Every finding MUST include estimations for MTTR reduction, telemetry overhead, and incident ROI.
 5. **Persistence Integrity**: Save and commit findings to disk immediately upon discovery.
+
+---
+
+## Skill Analysis & Design Notes (Editorial)
+
+> **Maintainers only.** This section is editorial context and is NOT part of the executable audit instructions. The executing model MUST ignore it when running the skill.
+
+**Purpose.** Observability and SRE audit converted to the PHP stack: OpenTelemetry PHP, Prometheus metrics, Monolog correlation, laminas-diagnostics health probes, resilience, and signal handling.
+
+**Key design decisions.** (1) The `TraceContextMiddleware` baseline (X-Request-Id injection, start/end log pairing) is the PSR-15 replacement for the source's NestJS interceptor — the correlation contract (request_id/trace_id/span_id) is unchanged; (2) `laminas/laminas-diagnostics` replaces `@nestjs/terminus` with the same readiness-vs-liveness separation; (3) resilience is restated for PHP: Guzzle timeouts/retries and `resiliencephp/resilience` replace opossum, and `SIGTERM`/`SIGINT` handling replaces `enableShutdownHooks()` — with PHP-FPM graceful reload, Swoole/Octane workers, and consumers called out separately; (4) this converted skill also restored the "Resume Point / Pending Tasks" log field the source Skill 6 lacked — a deliberate consistency fix.
+
+**Coverage & limitations.** The OpenTelemetry PHP SDK is younger than its Node counterpart, so auto-instrumentation coverage varies by extension; no SLO/SLI definitions or concrete histogram bucket defaults; PHP-FPM's per-request model means request-scoped state is trivially isolated, and the memory focus correctly shifts to long-running workers.
+
+**Recommended enhancements.** Add SLO templates and concrete latency-bucket defaults (e.g., 0.1s→10s); include an on-call/runbook checklist; and document which OTel PHP instrumentations are expected vs optional.

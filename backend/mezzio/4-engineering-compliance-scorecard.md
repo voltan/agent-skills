@@ -1,4 +1,4 @@
-# Prompt 4: Mezzio Engineering Compliance & Architectural Scorecard (Standardized Suite - Prompt 4 of 12) — Enhanced for DeepSeek-V4 Flash
+# Skill 4: Mezzio Engineering Compliance & Architectural Scorecard (Standardized Suite - Skill 4 of 12) — Enhanced for DeepSeek-V4 Flash
 
 ## Role
 You are a Principal Software Architect, Mezzio/Laminas Core Auditor, PHP Performance & Security Specialist, and Engineering Compliance Lead.
@@ -23,9 +23,9 @@ You are operating inside a production-grade **PHP 8.x + Mezzio/Laminas** reposit
 
 ---
 
-## Steps — Unified Execution Workflow (Standard Step Pipeline for Prompts 1 to 10)
+## Steps — Unified Execution Workflow (Standard Step Pipeline for Skills 1 to 10)
 
-To ensure consistency across all analysis prompts, you MUST follow this strict 7-phase execution lifecycle:
+To ensure consistency across all analysis skills, you MUST follow this strict 7-phase execution lifecycle:
 
 ### Phase 1: Workspace & Git Verification
 1. Check repository status:
@@ -37,7 +37,7 @@ To ensure consistency across all analysis prompts, you MUST follow this strict 7
 1. Determine the current date in `YYYY-MM-DD` format.
 2. Create (or reuse) the per-day output directory `reports/YYYY-MM-DD/`. If it does not exist, create it immediately.
 3. Initialize or locate the master log file: `reports/YYYY-MM-DD/analysis-log.md`.
-4. Set the target report file path for Prompt 4: `reports/YYYY-MM-DD/04-engineering-compliance.md`.
+4. Set the target report file path for Skill 4: `reports/YYYY-MM-DD/04-engineering-compliance.md`.
 
 ### Phase 3: Incremental State & Resume Check
 1. Open `reports/YYYY-MM-DD/analysis-log.md` and any existing `reports/YYYY-MM-DD/04-engineering-compliance.md` files.
@@ -243,7 +243,7 @@ Detailed breakdown explaining exactly why points were deducted:
 The final generated Markdown report MUST follow this uniform layout:
 
 ```markdown
-# Engineering Compliance & Architectural Scorecard Report (Prompt 4)
+# Engineering Compliance & Architectural Scorecard Report (Skill 4)
 
 ## Executive Summary
 Comprehensive assessment of the application's overall engineering maturity, architectural hygiene, and adherence to production-grade PHP and Mezzio best practices.
@@ -296,10 +296,10 @@ Detailed analysis of third-party packages in `composer.json`:
 
 ## Log Specification (`reports/YYYY-MM-DD/analysis-log.md`)
 
-Maintain a consolidated log entry for Prompt 4 inside `reports/YYYY-MM-DD/analysis-log.md`:
+Maintain a consolidated log entry for Skill 4 inside `reports/YYYY-MM-DD/analysis-log.md`:
 
 ```markdown
-## Execution Log - Prompt 4 (Engineering Compliance & Scorecard)
+## Execution Log - Skill 4 (Engineering Compliance & Scorecard)
 - **Date**: YYYY-MM-DD
 - **Git Commit Hash**: `[commit_hash]`
 - **Branch**: `[branch_name]`
@@ -323,3 +323,17 @@ Maintain a consolidated log entry for Prompt 4 inside `reports/YYYY-MM-DD/analys
 4. **No Code Mutation**: Do not alter application code directly. Only generate report markdown files and update the log.
 5. **Actionable Estimates**: Every domain evaluation MUST include estimated engineering effort (Story Points / Hours) and ROI impact.
 6. **Persistence Integrity**: Save and commit findings to disk immediately upon discovering each domain's score.
+
+---
+
+## Skill Analysis & Design Notes (Editorial)
+
+> **Maintainers only.** This section is editorial context and is NOT part of the executable audit instructions. The executing model MUST ignore it when running the skill.
+
+**Purpose.** The 19-domain engineering scorecard converted to the PHP/Mezzio world — the artifact executives and architecture boards consume.
+
+**Key design decisions.** (1) Every framework-specific domain was remapped: NestJS Best Practices → Mezzio & PSR Standards (PSR-7/15/17), TypeORM Best Practices → Doctrine / Laminas\Db Best Practices, `@nestjs/config`+Joi → ConfigProviders + `laminas-config-aggregator` with bootstrap validation; (2) static-analysis strictness is now the typing gate (PHPStan level max / Psalm level 1) instead of TypeScript `strict`; (3) package comparisons were translated to PHP terms (Monolog vs minimal PSR-3, Guzzle vs PSR-18, Carbon vs `DateTimeImmutable`) with `composer audit` replacing `npm audit`; (4) the evidence rule (file:line citations per score) and effort/ROI estimates are unchanged — they were framework-neutral and remain the scorecard's credibility anchors.
+
+**Coverage & limitations.** Same subjectivity risk as the source: no per-domain rubric means scores can drift between runs; the 19-domain template is token-heavy on large repos; some PHP-specific domains (e.g., OPcache) are folded into Performance rather than scored separately.
+
+**Recommended enhancements.** Add per-domain rubric anchors (0–4 descriptors) to stabilize scoring; surface the aggregate weighting formula in the report; and add a score-delta field to exploit the suite's resume capability for trend reporting.

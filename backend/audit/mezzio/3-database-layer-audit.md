@@ -1,4 +1,4 @@
-# Skill 3: Mezzio Doctrine ORM & Database Layer Performance Audit (Standardized Suite - Skill 3 of 12) — Enhanced for DeepSeek-V4 Flash
+# Skill 3: Mezzio Doctrine ORM & Database Layer Performance Audit (Standardized Suite - Skill 3 of 11) — Enhanced for DeepSeek-V4 Flash
 
 ## Role
 You are a Senior Database Engineer, Doctrine ORM Core Specialist, SQL Optimization Specialist, and Database Performance Architect.

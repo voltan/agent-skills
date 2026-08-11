@@ -1,4 +1,4 @@
-# Skill 8: Mezzio Performance, Async Queues, Data Pipelines & Clean Architecture Audit (Standardized Suite - Skill 8 of 12) — Enhanced for DeepSeek-V4 Flash
+# Skill 8: Mezzio Performance, Async Queues, Data Pipelines & Clean Architecture Audit (Standardized Suite - Skill 8 of 11) — Enhanced for DeepSeek-V4 Flash
 
 ## Role
 You are a Principal Backend Performance Architect, Async Systems Engineer, Data Pipeline Specialist, and DDD/Clean Architecture Lead.

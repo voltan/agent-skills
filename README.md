@@ -10,8 +10,8 @@ The repository separates **Audit Skills** (assessment/review of existing code an
 agent-skills/
 ├── backend/                      # Backend skills
 │   ├── audit/                    #   Audit skills (existing)
-│   │   ├── nestjs/               #     12-skill suite for NestJS/TypeScript
-│   │   └── mezzio/               #     12-skill suite for PHP 8.x / Mezzio / Laminas
+│   │   ├── nestjs/               #     11-skill suite for NestJS/TypeScript
+│   │   └── mezzio/               #     11-skill suite for PHP 8.x / Mezzio / Laminas
 │   └── coding/                   #   Reserved for future coding skills
 │       ├── nestjs/
 │       └── mezzio/
@@ -37,7 +37,7 @@ agent-skills/
 
 | Namespace | Purpose | Status |
 | :--- | :--- | :--- |
-| `backend/audit/` | Assessment of NestJS and Mezzio/Laminas backends | ✅ 24 skills |
+| `backend/audit/` | Assessment of NestJS and Mezzio/Laminas backends | ✅ 22 skills |
 | `frontend/audit/` | Assessment of Nuxt and Vue frontends | ✅ 19 skills |
 | `seo/audit/` | SEO & web performance assessment | ✅ 1 skill |
 | `infrastructure/audit/` | Infrastructure & deployment security assessment | ✅ 1 skill |
@@ -60,8 +60,8 @@ Each audit namespace follows a consistent methodology:
 
 | Path | Content |
 | :--- | :--- |
-| `backend/audit/nestjs/` | Skills 1–12: security, performance, TypeORM/database, compliance, QA, observability/SRE, CI/CD, async architecture, resilience/multi-tenancy, RAG/vector/LLM, master consolidation, multi-stack security |
-| `backend/audit/mezzio/` | Skills 1–12: the Mezzio/Laminas PHP 8.x equivalents of the NestJS suite |
+| `backend/audit/nestjs/` | Skills 1–11: security (incl. multi-stack compliance), performance, TypeORM/database, compliance, QA, observability/SRE, CI/CD, async architecture, resilience/multi-tenancy, RAG/vector/LLM, master consolidation |
+| `backend/audit/mezzio/` | Skills 1–11: the Mezzio/Laminas PHP 8.x equivalents of the NestJS suite |
 | `frontend/audit/nuxtjs/` | `1-audit.md` (entry point) + `2-security`, `3-performance`, `4-architecture`, `5-ssr`, `6-seo`, `7-api`, `8-infrastructure`, `9-dependencies`, `10-testing` |
 | `frontend/audit/vuejs/` | `1-audit.md` (entry point) + `2-security`, `3-performance`, `4-architecture`, `5-rendering`, `6-api`, `7-infrastructure`, `8-dependencies`, `9-testing` |
 | `seo/audit/` | `nuxt-seo-performance-audit-agent.md` |

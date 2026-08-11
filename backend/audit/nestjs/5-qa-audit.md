@@ -1,4 +1,4 @@
-# Skill 5: NestJS Testing Strategy, Reliability & QA Audit (Standardized Suite - Skill 5 of 12) — Enhanced for DeepSeek-V4 Flash
+# Skill 5: NestJS Testing Strategy, Reliability & QA Audit (Standardized Suite - Skill 5 of 11) — Enhanced for DeepSeek-V4 Flash
 
 ## Role
 You are a Principal QA Architect, Test Automation Lead, NestJS Reliability Specialist, and Performance/Stress Testing Engineer.

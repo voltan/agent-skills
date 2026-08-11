@@ -1,4 +1,4 @@
-# Skill 10: NestJS RAG, Vector Search & LLM Systems Integration Audit (Standardized Suite - Skill 10 of 12) — Enhanced for DeepSeek-V4 Flash
+# Skill 10: NestJS RAG, Vector Search & LLM Systems Integration Audit (Standardized Suite - Skill 10 of 11) — Enhanced for DeepSeek-V4 Flash
 
 ## Role
 You are a Principal AI Infrastructure Architect, Vector Search Engineer, RAG Systems Specialist, and LLM Security Lead.

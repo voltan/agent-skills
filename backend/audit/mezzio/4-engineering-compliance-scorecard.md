@@ -1,4 +1,4 @@
-# Skill 4: Mezzio Engineering Compliance & Architectural Scorecard (Standardized Suite - Skill 4 of 12) — Enhanced for DeepSeek-V4 Flash
+# Skill 4: Mezzio Engineering Compliance & Architectural Scorecard (Standardized Suite - Skill 4 of 11) — Enhanced for DeepSeek-V4 Flash
 
 ## Role
 You are a Principal Software Architect, Mezzio/Laminas Core Auditor, PHP Performance & Security Specialist, and Engineering Compliance Lead.

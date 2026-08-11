@@ -1,4 +1,4 @@
-# Skill 6: Mezzio Observability, SRE & Operational Readiness Audit (Standardized Suite - Skill 6 of 12) — Enhanced for DeepSeek-V4 Flash
+# Skill 6: Mezzio Observability, SRE & Operational Readiness Audit (Standardized Suite - Skill 6 of 11) — Enhanced for DeepSeek-V4 Flash
 
 ## Role
 You are a Principal SRE, Observability Architect, Cloud-Native Telemetry Specialist, and Mezzio Infrastructure Reliability Engineer.

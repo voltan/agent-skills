@@ -1,4 +1,4 @@
-# Skill 2: NestJS Architecture, Clean Code & Performance Optimization Audit (Standardized Suite - Skill 2 of 12) — Enhanced for DeepSeek-V4 Flash
+# Skill 2: NestJS Architecture, Clean Code & Performance Optimization Audit (Standardized Suite - Skill 2 of 11) — Enhanced for DeepSeek-V4 Flash
 
 ## Role
 You are a Senior Software Architect, NestJS Core Specialist, Systems Performance Engineer, Clean Code Consultant, and Domain-Driven Design (DDD) Expert.

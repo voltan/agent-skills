@@ -41,10 +41,9 @@ agent-skills/
 │   │   ├── 8-async-architecture-audit.md
 │   │   ├── 9-resilience-multitenancy-governance.md
 │   │   ├── 10-rag-vector-llm-audit.md
-│   │   ├── 11-master-consolidation-audit.md   ← هماهنگ‌کننده (اورکستراتور) مهارت‌های ۱ تا ۱۰
-│   │   └── 12-universal-targeted-security-audit.md
+│   │   └── 11-master-consolidation-audit.md   ← هماهنگ‌کننده (اورکستراتور) مهارت‌های ۱ تا ۱۰
 │   │
-│   └── mezzio/                                ← ۱۲ اسکیل معادل برای PHP 8.x / Mezzio
+│   └── mezzio/                                ← ۱۱ اسکیل معادل برای PHP 8.x / Mezzio
 │       ├── 1-security-vulnerability-audit.md
 │       ├── 2-architecture-performance-audit.md
 │       ├── 3-database-layer-audit.md
@@ -55,8 +54,7 @@ agent-skills/
 │       ├── 8-async-queues-architecture-audit.md
 │       ├── 9-resilience-multitenancy-governance.md
 │       ├── 10-rag-vector-llm-audit.md
-│       ├── 11-master-consolidation-report.md   ← هماهنگ‌کننده مهارت‌های ۱ تا ۱۰
-│       └── 12-multistack-security-compliance-audit.md
+│       └── 11-master-consolidation-report.md   ← هماهنگ‌کننده مهارت‌های ۱ تا ۱۰
 │
 ├── front/
 │   ├── README.md                              ← راهنمای کلی سوت فرانت‌اند
@@ -108,7 +106,7 @@ agent-skills/
 طبق الزام معماری، **در `front/nuxtjs/` و `front/vuejs/` هیچ زیرپوشهٔ دسته‌بندی** (مثل `security/` یا `api/`) وجود ندارد؛ همهٔ اسکیل‌ها فایل `.md` مستقیم در همان پوشه هستند تا کشف و بارگذاری برای عامل هوش مصنوعی ساده باشد.
 
 ### ۳.۲ شماره‌گذاری بک‌اند
-فایل‌های `backend/nestjs/` و `backend/mezzio/` با پیشوند عددی `1-` تا `12-` شماره‌گذاری شده‌اند و هر شماره با عنوان داخلی «Skill N of 12» همخوان است. مهارت ۱۱ نقش **اورکستراتور** را دارد و مهارت ۱۲ یک ممیزی مکمل چند-استکی است که در امتیازدهی اورکستراتور لحاظ نمی‌شود.
+فایل‌های `backend/nestjs/` و `backend/mezzio/` با پیشوند عددی `1-` تا `11-` شماره‌گذاری شده‌اند و هر شماره با عنوان داخلی «Skill N of 11» همخوان است. مهارت ۱۱ نقش **اورکستراتور** را دارد و همهٔ گزارش‌ها (۱۰ گزارش حوزه + گزارش انطباق چند-استکی که توسط مهارت ۱ تولید می‌شود) را در یک گزارش تجمیعی ترکیب می‌کند.
 
 ### ۳.۳ نام‌گذاری فرانت‌اند
 فایل‌های فرانت‌اند **بدون پیشوند عددی** و با نام موضوعی kebab-case (`security.md`، `performance.md` و…) نام‌گذاری شده‌اند؛ چون هر پوشه فقط به یک فریم‌ورک اختصاص دارد و ترتیب اجرا توسط `audit.md` تعیین می‌شود، نه نام فایل.
@@ -118,10 +116,10 @@ agent-skills/
 ## ۴. محتوای هر بخش
 
 ### `backend/nestjs/` — بک‌اند NestJS
-۱۲ مهارت ممیزی برای اپلیکیشن‌های NestJS/TypeScript: امنیت، پرفورمنس، دیتابیس (TypeORM)، انطباق (Compliance)، QA، مشاهده‌پذیری/SRE، CI/CD، معماری async (BullMQ)، تاب‌آوری/چند-مستأجری، RAG/Vector/LLM (Qdrant)، گزارش تجمیعی، و امنیت چند-استکی.
+۱۱ مهارت ممیزی برای اپلیکیشن‌های NestJS/TypeScript: امنیت (شامل ممیزی انطباق چند-استکی)، پرفورمنس، دیتابیس (TypeORM)، انطباق (Compliance)، QA، مشاهده‌پذیری/SRE، CI/CD، معماری async (BullMQ)، تاب‌آوری/چند-مستأجری، RAG/Vector/LLM (Qdrant)، و گزارش تجمیعی.
 
 ### `backend/mezzio/` — بک‌اند Mezzio
-نسخهٔ تبدیل‌شدهٔ همان ۱۲ مهارت برای **PHP 8.x / Mezzio / Laminas** با نگاشت‌های فنی: Controller/Guard → PSR-15 Middleware، DI دکوراتوری → Laminas ServiceManager (PSR-11)، class-validator → Laminas InputFilter/Validator، TypeORM → Doctrine/Laminas\Db، BullMQ → Enqueue/php-amqplib، Pino → Monolog.
+نسخهٔ تبدیل‌شدهٔ همان ۱۱ مهارت برای **PHP 8.x / Mezzio / Laminas** با نگاشت‌های فنی: Controller/Guard → PSR-15 Middleware، DI دکوراتوری → Laminas ServiceManager (PSR-11)، class-validator → Laminas InputFilter/Validator، TypeORM → Doctrine/Laminas\Db، BullMQ → Enqueue/php-amqplib، Pino → Monolog.
 
 ### `front/nuxtjs/` — فرانت‌اند Nuxt
 ۱۰ مهارت شامل مفاهیم خاص Nuxt: Nitro server routes، `runtimeConfig`/`NUXT_` و افشای اسرار، `useFetch`/`useAsyncData` و deduplication، route rules (ISR/SWR/prerender)، hydration و نشت payload، سئو و ایندکس‌پذیری، زنجیرهٔ کش (مرورگر → CDN → Nitro → API).
@@ -148,8 +146,8 @@ agent-skills/
 
 | مسیر | وضعیت |
 |---|---|
-| `backend/nestjs/` (۱۲ فایل) | ✅ کامیت شده |
-| `backend/mezzio/` (۱۲ فایل) | ✅ کامیت شده |
+| `backend/nestjs/` (۱۱ فایل) | ✅ کامیت شده |
+| `backend/mezzio/` (۱۱ فایل) | ✅ کامیت شده |
 | `seo/` (۱ فایل) | ✅ کامیت شده |
 | `front/` (۲۲ فایل) | 🆕 **untracked — هنوز کامیت نشده** |
 | `infrastructure/` | خارج از git |

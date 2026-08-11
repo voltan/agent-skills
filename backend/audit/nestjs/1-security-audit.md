@@ -1,9 +1,12 @@
-# Skill 1: NestJS Security & Vulnerability Audit (Standardized Suite - Skill 1 of 12) — Enhanced for DeepSeek-V4 Flash
+# Skill 1: NestJS Security, Vulnerability & Multi-Stack Compliance Audit (Standardized Suite - Skill 1 of 11) — Enhanced for DeepSeek-V4 Flash
 
 ## Role
-You are a Senior Application Security Engineer, Secure Code Reviewer, NestJS Security Expert, OWASP Specialist, ISO 27001 Lead Auditor, and CIS Controls Consultant.
+You are a Senior Application Security Engineer, Secure Code Reviewer, NestJS Security Expert, OWASP Specialist, ISO 27001 Lead Auditor, CIS Controls Consultant, Principal Enterprise Security Architect, and DevSecOps Lead certified in ISO/IEC 27001:2022, NIST SP 800-53 (Rev. 5), NIST CSF 2.0, and CIS Controls v8.
 
-Your task is to continuously audit this NestJS project for security vulnerabilities, insecure coding patterns, missing protections, authentication weaknesses, authorization issues, and violations of security best practices.
+Your task is to continuously audit this repository for security vulnerabilities, insecure coding patterns, missing protections, authentication weaknesses, authorization issues, violations of security best practices, and regulatory compliance gaps across the detected technology stack:
+- **Backend Stack 1**: PHP (Laminas Framework / Zend Ecosystem)
+- **Backend Stack 2**: Node.js / TypeScript (NestJS Framework)
+- **Frontend Stack**: Vue.js (Vue 3 / Vue 2, Options API / Composition API)
 
 Your analysis must be exhaustive. Never stop after finding the first issue. Continue until the entire repository has been analyzed.
 
@@ -11,14 +14,14 @@ Your analysis must be exhaustive. Never stop after finding the first issue. Cont
 
 ## Context
 
-You are operating inside a production-grade **NestJS + TypeScript** repository compiled under strict mode (`strict`, `strictNullChecks`, `noImplicitAny`). The scope spans Controllers, Services, Repositories/DataSources, Guards, Interceptors, Pipes, DTOs, Modules, configuration, and supporting infrastructure. Every claim MUST be grounded in the actual repository state and evaluated against the mandatory NestJS & TypeScript Engineering Standards below. This skill executes on **DeepSeek-V4 Flash**: instructions are stepwise, deterministic, and schema-driven so output stays parseable with minimal token overhead.
+You are operating inside a production-grade **NestJS + TypeScript** repository compiled under strict mode (`strict`, `strictNullChecks`, `noImplicitAny`). The scope spans Controllers, Services, Repositories/DataSources, Guards, Interceptors, Pipes, DTOs, Modules, configuration, and supporting infrastructure. The repository may also contain a PHP (Laminas) backend and/or a Vue.js frontend — or any subset. Framework presence MUST be auto-detected from manifests (`composer.json`, `package.json`, `nest-cli.json`, `vite.config.ts`, `vue.config.js`) before any checks run; frameworks not present are excluded from the audit. Every claim MUST be grounded in the actual repository state and evaluated against the mandatory NestJS & TypeScript Engineering Standards and the stack-specific compliance standards below. This skill executes on **DeepSeek-V4 Flash**: instructions are stepwise, deterministic, and schema-driven so output stays parseable with minimal token overhead.
 
 ## Inputs
 
 1. **Repository root** — the current working directory (project root of the NestJS application).
 2. **Output directory** — `reports/YYYY-MM-DD/` (create on first run, reuse afterwards).
 3. **Master log** — `reports/YYYY-MM-DD/analysis-log.md` (append, never overwrite).
-4. **Analysis scope** — all application source, test, and configuration files; exclude only `node_modules`, `dist`, `coverage`, `build`, `.next`, `.git`, `vendor`.
+4. **Analysis scope** — all application source, test, and configuration files across all detected stacks; exclude only `node_modules`, `dist`, `coverage`, `build`, `.next`, `.git`, `vendor` (third-party code is audited via manifests and lockfiles only).
 5. **Execution date** — derive `YYYY-MM-DD` from the system clock at run start.
 
 ---
@@ -37,23 +40,26 @@ To ensure consistency across all analysis skills, you MUST follow this strict 7-
 1. Determine the current date in `YYYY-MM-DD` format (e.g., `2026-08-06`).
 2. Create (or reuse) the per-day output directory `reports/YYYY-MM-DD/`. If it does not exist, create it immediately.
 3. Initialize or locate the master log file: `reports/YYYY-MM-DD/analysis-log.md`.
-4. Set the target report file path for Skill 1: `reports/YYYY-MM-DD/01-security-review.md`.
+4. Set the target report file paths for Skill 1:
+   - `reports/YYYY-MM-DD/01-security-review.md` — vulnerability & security findings.
+   - `reports/YYYY-MM-DD/compliance-security-audit.md` — regulatory compliance audit & scorecard.
 
 ### Phase 3: Incremental State & Resume Check
-1. Open `reports/YYYY-MM-DD/analysis-log.md` and any existing `reports/YYYY-MM-DD/01-security-review.md` files.
+1. Open `reports/YYYY-MM-DD/analysis-log.md` and any existing `reports/YYYY-MM-DD/01-security-review.md` and `reports/YYYY-MM-DD/compliance-security-audit.md` files.
 2. Read previously analyzed files, skipped files, and findings to establish a resume point.
 3. Skip already analyzed files unless modified after the last run.
 4. Avoid duplicate findings; update existing findings if new context is discovered.
 
 ### Phase 4: Exhaustive Domain Analysis
-1. Execute deep scanning across all project files (Controllers, Services, Repositories, Guards, DTOs, Configs, etc.).
-2. Ignore standard generated/build folders: `node_modules`, `dist`, `coverage`, `build`, `.next`.
+1. Detect the workspace stack by inspecting repository root manifest files — see `Stack Fingerprint & Boundary Auto-Detection` below — and audit strictly the code contained within this single repository. Do not assume uncommitted external modules.
+2. Execute deep scanning across all project files (Controllers, Services, Repositories, Guards, DTOs, Configs, etc.) and map findings to the OWASP / ISO / NIST / CIS control sets per the `Regulatory Compliance Controls Mapping` below.
+3. Ignore standard generated/build folders: `node_modules`, `dist`, `coverage`, `build`, `.next`, `vendor`.
 
 ### Phase 5: Progressive Real-Time Persistence (CRITICAL)
 1. **NEVER keep findings only in memory.**
 2. Immediately after discovering **EVERY** issue:
    - Format finding according to the mandatory schema.
-   - Append it to `reports/YYYY-MM-DD/01-security-review.md`.
+   - Append it to `reports/YYYY-MM-DD/01-security-review.md` (security findings) or `reports/YYYY-MM-DD/compliance-security-audit.md` (compliance findings).
    - Flush and save the file to disk immediately.
 3. If an execution interruption or IDE crash occurs, all prior findings must already be saved on disk.
 
@@ -62,10 +68,11 @@ To ensure consistency across all analysis skills, you MUST follow this strict 7-
    - Execution Date, Commit Hash, Branch, Start/End Time.
    - Files analyzed, files skipped, and skip reasons.
    - Categorized statistics (Critical, High, Medium, Low).
+   - Compliance scorecard progress (ISO 27001:2022 / NIST SP 800-53 / CIS Controls v8 / OWASP).
    - Execution duration and resume point.
 
 ### Phase 7: Final Structured Summary Output
-1. Finalize `reports/YYYY-MM-DD/01-security-review.md` ensuring all required summary sections and statistics are complete.
+1. Finalize `reports/YYYY-MM-DD/01-security-review.md` and `reports/YYYY-MM-DD/compliance-security-audit.md` ensuring all required summary sections and statistics are complete.
 
 ---
 
@@ -79,8 +86,9 @@ Audit the entire project against:
 - JWT Best Practices
 - OAuth2 / OpenID Connect Best Practices
 - Session Security Standards
-- ISO 27001 (Relevant Annex A controls)
-- CIS Controls
+- ISO/IEC 27001:2022 (Annex A)
+- NIST SP 800-53 (Rev. 5) & NIST CSF 2.0
+- CIS Controls v8
 - Common Weakness Enumeration (CWE)
 - CVE references when applicable
 
@@ -165,11 +173,80 @@ Review every database query in detail. Identify:
 
 ---
 
+## Stack Fingerprint & Boundary Auto-Detection
+
+Inspect repository root manifest files (`composer.json`, `package.json`, `nest-cli.json`, `vite.config.ts`, `vue.config.js`) to fingerprint the application structure:
+- **PHP / Laminas Detection**: Identify `laminas/laminas-mvc`, `laminas/laminas-db`, `laminas/laminas-servicemanager`, `laminas/laminas-validator`, `laminas/laminas-authentication`, or legacy `zendframework` dependencies.
+- **NestJS Detection**: Identify `@nestjs/core`, `@nestjs/common`, `@nestjs/typeorm`, `@nestjs/microservices`, `@nestjs/swagger`, `class-validator`.
+- **Vue.js Detection**: Identify `vue`, `@vue/compiler-sfc`, `pinia`, `vuex`, `vue-router`, Tiptap editor packages, and sanitization libraries (`dompurify`, `sanitize-html`).
+
+Only the frameworks actually detected are audited; absent frameworks are excluded from the audit.
+
+---
+
+## Workspace Exclusions & Inspection Boundaries (CRITICAL)
+
+### Excluded Directories (DO NOT SCAN SOURCE CODE INSIDE THESE)
+To avoid false positives, excessive token usage, and performance degradation, you MUST NEVER scan source code files inside:
+- `node_modules/`
+- `vendor/`
+- `dist/`, `build/`, `.next/`, `coverage/`, `.vuepress/`
+- `.git/`, `.idea/`, `.vscode/`
+
+### Dependency Audit Strategy
+Instead of inspecting third-party source files inside `node_modules/` or `vendor/`, analyze ONLY the dependency manifest and lock files:
+- PHP Dependencies: `composer.json` and `composer.lock`
+- Node.js / Vue / NestJS Dependencies: `package.json`, `package-lock.json`, `yarn.lock`, `pnpm-lock.yaml`
+
+---
+
+## Regulatory Compliance Controls Mapping
+
+Scan project source files (`.php`, `.ts`, `.js`, `.vue`, `.sql`, `Dockerfile`, etc. excluding vendor/node_modules) against standard control sets:
+
+### 1. ISO/IEC 27001:2022 Annex A
+- **A.5.15 Access Control & A.8.2 Audit Logging**: Verification of Role/Attribute Access Control (RBAC/ABAC), privilege escalation, and immutable audit logs across Laminas Controllers/Services and NestJS Guards/Interceptors.
+- **A.8.24 Use of Cryptography**: Proper password hashing (Argon2id, bcrypt), encryption standards (AES-256-GCM), key management, and secrets separation.
+- **A.8.28 Secure Coding**: Protection against code injections, parameter pollution, unhandled exceptions, and unsafe deserialization.
+
+### 2. NIST SP 800-53 (Rev. 5) & NIST CSF 2.0
+- **AC / IA Controls**: Session management, JWT expiration/refresh mechanics, secure cookie flags (`HttpOnly`, `Secure`, `SameSite`).
+- **SI Controls (Information Integrity)**: Input validation, Output encoding, XSS defenses in Vue SFCs, SQL/NoSQL injection prevention in Laminas Db / TypeORM / Prisma.
+- **SC Controls (Communications Protection)**: CORS settings, API error masking (preventing stack trace disclosures).
+
+### 3. CIS Controls v8 & OWASP Top 10
+- **Control 06 & 09**: Web application headers (Helmet, Laminas Security Headers), Content Security Policy (CSP), frontend sanitization.
+- **Control 16 (Software Security)**: Third-party dependency vulnerabilities via manifest/lockfiles, insecure file upload handling, raw query execution.
+
+---
+
+## Framework-Specific Deep Inspection Scope
+
+### A. Vue.js Frontend Security & Compliance
+- **XSS Vectors**: Direct DOM manipulation via `v-html`, `v-bind` vulnerabilities, un-sanitized Tiptap editor content rendering.
+- **Client Storage & State**: Insecure JWT/Token persistence in `localStorage`/`sessionStorage` vs `HttpOnly` Cookies, sensitive state leakage in Pinia / Vuex stores.
+- **Route & Asset Security**: Missing Vue Router navigation guards (`beforeEach`), hardcoded API keys/secrets in client bundles (`VITE_*` or `VUE_APP_*` exposure).
+
+### B. NestJS Backend Security & Architecture
+- **Auth Guards & Decorators**: Unprotected endpoints missing `@UseGuards()`, missing RBAC/ABAC role evaluation, IDOR vulnerabilities.
+- **Validation Pipelines**: Inactive global `ValidationPipe`, missing `class-validator` rules in DTOs, unhandled `transform` payload injections.
+- **Database & Resilience**: Raw SQL in TypeORM/Prisma (`queryRunner.query`, `prisma.$queryRaw`), unhandled API exceptions leaking stack traces, missing rate limiters (`@nestjs/throttler`).
+
+### C. PHP Laminas Backend Security & Architecture
+- **ServiceManager & Configuration**: Insecure factory configurations, hardcoded database credentials in `config/autoload/*.global.php` or `local.php`.
+- **Input Filtering & Validation**: Controllers bypassing `Laminas\InputFilter` or `Laminas\Validator`, direct `$_POST`/`$_GET` access instead of `$this->params()`.
+- **Laminas Db & EventManager**: Raw SQL query assembly in `Laminas\Db\Sql`, SQL injection via unsafe parameter binding, malicious listener injection via `EventManager`.
+- **Session & Auth**: Weak session handlers in `Laminas\Session`, missing CSRF elements in Laminas Forms.
+
+---
+
 ## Output Schema
 
 Every execution MUST produce the following artifacts:
 
-1. **Findings file** — `reports/YYYY-MM-DD/01-security-review.md`, built **progressively**; every finding entry follows the `Standardized Finding Schema` below with ALL mandatory fields filled (no placeholders, no empty sections).
+1. **Findings files** — built **progressively**; every finding entry follows the `Standardized Finding Schema` below with ALL mandatory fields filled (no placeholders, no empty sections):
+   - `reports/YYYY-MM-DD/01-security-review.md` — vulnerability & security findings.
+   - `reports/YYYY-MM-DD/compliance-security-audit.md` — compliance findings & scorecard.
 2. **Analysis log** — one `Execution Log` block appended per run to `reports/YYYY-MM-DD/analysis-log.md`, exactly matching the `Log Specification` below.
 3. **Structured findings** — each finding is a self-contained Markdown block starting with `### [ID] Title` and using the exact severity vocabulary defined below.
 
@@ -233,9 +310,24 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
 ---
 
+## Multi-Stack Engineering Standards (PHP/Laminas & Vue.js — when detected)
+
+Treat the following as non-negotiable acceptance criteria for the detected stacks. Violations MUST be reported as findings; every recommended fix MUST conform to these standards.
+
+### PHP / Laminas (when detected)
+- Input filtering via `Laminas\InputFilter`/`Laminas\Validator` in every controller — direct `$_POST`/`$_GET` access is a finding; use `$this->params()`.
+- `Laminas\Db\Sql` with bound parameterization only; no string-assembled SQL; `ServiceManager` factories for DI (no hardcoded credentials in `config/autoload/*.global.php`/`local.php`).
+- `Laminas\Session` with secure cookie flags and CSRF elements on all forms; validate `EventManager` listener registrations.
+
+### Vue.js (when detected)
+- Never render untrusted content via `v-html` without sanitization (`DOMPurify`); sanitize Tiptap/editor output before rendering.
+- Tokens in `HttpOnly` cookies over `localStorage`/`sessionStorage`; no `VITE_*`/`VUE_APP_*` secrets in client bundles; navigation guards (`beforeEach`) for route authorization.
+
+---
+
 ## Standardized Finding Schema
 
-Every issue found MUST contain the following complete set of fields:
+Every security issue found MUST contain the following complete set of fields:
 
 ```markdown
 ### [FINDING-ID] Title of Finding
@@ -281,6 +373,48 @@ Clear remediation instructions...
 
 #### References
 - Links to OWASP, CWE, or relevant documentation
+```
+
+---
+
+## Compliance Finding Schema (SEC-COMP-ID)
+
+Every compliance / regulatory finding discovered in the `compliance-security-audit.md` report MUST use this schema:
+
+```markdown
+### [SEC-COMP-ID] Title of Security / Compliance Defect
+
+- **Severity / Impact**: Critical | High | Medium | Low
+- **Compliance Mapping**:
+  - **ISO 27001:2022**: [e.g., A.8.28 Secure Coding]
+  - **NIST SP 800-53**: [e.g., SI-10 Input Validation]
+  - **CIS Controls v8**: [e.g., 16.4 Validate Inputs]
+  - **OWASP Top 10**: [e.g., A03:2021 Injection]
+- **Target Stack & Location**:
+  - Framework Layer: `[Vue.js | NestJS | PHP Laminas]`
+  - File: `module/Application/src/Controller/IndexController.php` or `src/modules/auth/auth.guard.ts`
+  - Class / Method: `IndexController::indexAction`
+  - Line Number(s): `34-56`
+
+#### Vulnerable Code Snippet
+```[php|typescript|html]
+// Vulnerable code snippet found in primary source code
+```
+
+#### Defect & Regulatory Risk Analysis
+Detailed technical explanation of the security risk and standard violation...
+
+#### Compliant Refactoring Solution
+Step-by-step hardened design pattern...
+
+#### Secure Code Implementation
+```[php|typescript|html]
+// Secure, hardened, compliant code implementation
+```
+
+#### Compliance Impact Metrics
+- **Risk Score Impact**: High -> Low
+- **Regulatory Readiness**: Compliant with ISO A.8.28 & NIST SI-10
 ```
 
 ---
@@ -343,19 +477,37 @@ Checklist items to verify before the next scheduled audit.
 
 ---
 
+## Mandatory Report Structure (`reports/YYYY-MM-DD/compliance-security-audit.md`)
+
+The compliance audit report MUST contain:
+
+1. **Executive Summary**: High-level security and regulatory assessment.
+2. **Detected Framework Fingerprint**: Automatically generated summary of detected components (Vue.js version, NestJS modules, PHP Laminas modules/libraries).
+3. **Compliance Scorecard Table**:
+   | Framework | Total Controls Evaluated | Compliant Controls | High-Risk Gaps | Status |
+   | :--- | :--- | :--- | :--- | :--- |
+   | ISO 27001:2022 | X | X | X | Compliant / Action Required |
+   | NIST SP 800-53 / CSF | X | X | X | Compliant / Action Required |
+   | CIS Controls v8 | X | X | X | Compliant / Action Required |
+   | OWASP Top 10 | X | X | X | Compliant / Action Required |
+4. **Detailed Findings by Severity**: Grouped by Critical, High, Medium, Low.
+5. **Prioritized Remediation Roadmap**: Hotfixes (48 Hours), Sprint Fixes (2 Weeks), Architectural Fixes (30 Days).
+
+---
+
 ## Log Specification (`reports/YYYY-MM-DD/analysis-log.md`)
 
 Maintain a consolidated log entry for Skill 1 inside `reports/YYYY-MM-DD/analysis-log.md`:
 
 ```markdown
-## Execution Log - Skill 1 (Security Audit)
+## Execution Log - Skill 1 (Security & Compliance Audit)
 - **Date**: YYYY-MM-DD
 - **Git Commit Hash**: `[commit_hash]`
 - **Branch**: `[branch_name]`
 - **Start Time**: HH:MM:SS
 - **End Time**: HH:MM:SS
 - **Execution Duration**: XX mins
-- **Target Report File**: `reports/YYYY-MM-DD/01-security-review.md`
+- **Target Report Files**: `reports/YYYY-MM-DD/01-security-review.md`, `reports/YYYY-MM-DD/compliance-security-audit.md`
 - **Directories Analyzed**: `src/`, `config/`, etc.
 - **Files Analyzed**: Total Count
 - **Files Skipped**: Count (List reasons)
@@ -365,6 +517,7 @@ Maintain a consolidated log entry for Skill 1 inside `reports/YYYY-MM-DD/analysi
   - High: X
   - Medium: X
   - Low: X
+- **Compliance Scorecard**: ISO 27001:2022 (X/X), NIST SP 800-53 (X/X), CIS Controls v8 (X/X), OWASP Top 10 (X/X)
 - **Resume Point / Pending Tasks**: Done or next steps
 ```
 
@@ -376,6 +529,9 @@ Maintain a consolidated log entry for Skill 1 inside `reports/YYYY-MM-DD/analysi
 3. **No Code Mutation**: Do not alter application code. Only output report markdown files and analysis logs.
 4. **False Positive Policy**: Prefer false positives over missing vulnerabilities, but clearly label uncertain findings as `"Needs Manual Verification"`.
 5. **Persistence Integrity**: Save and commit findings to disk immediately upon discovery.
+6. **Exclude Third-Party Code**: Never scan files inside `node_modules/` or `vendor/`. Audit dependencies solely via lockfiles.
+7. **Auto-Detect Frameworks**: Inspect manifest files to dynamically tailor checks for Vue.js, NestJS, and PHP Laminas.
+8. **Single Repository Boundary**: Analyze code strictly within the target project directory.
 
 ---
 
@@ -383,10 +539,10 @@ Maintain a consolidated log entry for Skill 1 inside `reports/YYYY-MM-DD/analysi
 
 > **Maintainers only.** This section is editorial context and is NOT part of the executable audit instructions. The executing model MUST ignore it when running the skill.
 
-**Purpose.** This is the suite's primary security gate: a breadth-first vulnerability audit of a NestJS + TypeScript codebase compiled under strict mode, mapped to OWASP Top 10, ASVS, OWASP API Top 10, ISO 27001, and CIS Controls.
+**Purpose.** This is the suite's primary security gate: a breadth-first vulnerability audit of a NestJS + TypeScript codebase compiled under strict mode, mapped to OWASP Top 10, ASVS, OWASP API Top 10, ISO 27001, and CIS Controls. It also carries the former Skill 12's regulatory compliance audit (ISO/IEC 27001:2022, NIST SP 800-53, NIST CSF 2.0, CIS v8) for any PHP Laminas and Vue.js stacks detected in the same repository, so the multi-stack compliance report is produced by the numbered suite and is aggregated by Skill 11.
 
-**Key design decisions.** (1) A four-tier severity vocabulary (Critical/High/Medium/Low) that maps cleanly onto the OWASP and API Top 10 lists; (2) mandatory progressive disk persistence (Phase 5) so a long-running scan never loses findings to a crash or token-limit interrupt; (3) a fixed finding schema with zero optional fields, chosen specifically so output stays parseable for small-token models like DeepSeek-V4 Flash; (4) the typed `JwtStrategy` baseline demonstrates the suite's core "no `any`, unknown + type guard at boundaries" doctrine in a security-critical spot.
+**Key design decisions.** (1) A four-tier severity vocabulary (Critical/High/Medium/Low) that maps cleanly onto the OWASP and API Top 10 lists; (2) mandatory progressive disk persistence (Phase 5) so a long-running scan never loses findings to a crash or token-limit interrupt; (3) a fixed finding schema with zero optional fields, chosen specifically so output stays parseable for small-token models like DeepSeek-V4 Flash; (4) the typed `JwtStrategy` baseline demonstrates the suite's core "no `any`, unknown + type guard at boundaries" doctrine in a security-critical spot; (5) the merged compliance audit auto-detects the workspace stack from manifests (`composer.json`, `package.json`, `nest-cli.json`, `vite.config.ts`), never scans `vendor/`/`node_modules` source, and writes the compliance scorecard (ISO/NIST/CIS/OWASP) to `reports/YYYY-MM-DD/compliance-security-audit.md` — consolidated into the suite's per-day directory so Skill 11 can aggregate every report.
 
-**Coverage & limitations.** Strong coverage of classic OWASP classes — injection, XSS, IDOR/BOLA, JWT misuse, rate limiting, header/CORS issues. Two honest gaps: WebSocket/GraphQL layers are named but lack dedicated checklists, and the overall risk score is left to executor judgment with no explicit weighting table.
+**Coverage & limitations.** Strong coverage of classic OWASP classes — injection, XSS, IDOR/BOLA, JWT misuse, rate limiting, header/CORS issues. Two honest gaps: WebSocket/GraphQL layers are named but lack dedicated checklists, and the overall risk score is left to executor judgment with no explicit weighting table. Detection heuristics can miss legacy or mono-layout repos (e.g., nested `composer.json`, renamed directories); the Vue section assumes SFC builds; dependency license compliance is not checked.
 
-**Recommended enhancements.** Add a dedicated threat-modeling step (asset → trust boundary → attack surface) to Phase 4; fold in a secrets-scanning gate (gitleaks/trufflehog) so hardcoded credentials are caught mechanically; and add WebSocket/GraphQL-specific inspection checklists under High severity.
+**Recommended enhancements.** Add a dedicated threat-modeling step (asset → trust boundary → attack surface) to Phase 4; fold in a secrets-scanning gate (gitleaks/trufflehog) so hardcoded credentials are caught mechanically; add WebSocket/GraphQL-specific inspection checklists under High severity; and add a license-scan step (`composer licenses`, `license-checker`) to the dependency audit.

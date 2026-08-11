@@ -2,16 +2,16 @@
 
 - **Execution Date:** 2026-08-11 13:15
 - **Source File (NestJS):** `backend/nestjs/5-qa-audit.md`
-- **Converted File (Mezzio):** `backend/mezzio/mezzio-qa-testing-audit.md`
+- **Converted File (Mezzio):** `backend/mezzio/5-qa-testing-audit.md`
 - **Report Location:** `./reports/2026-08-11/report-mezzio-qa-testing-audit.md`
 
 ---
 
 ## 1. 🔄 File Naming Audit & Routing
 - **Source Kept Intact:** Yes (`backend/nestjs/` untouched)
-- **Target File Created:** `backend/mezzio/mezzio-qa-testing-audit.md`
+- **Target File Created:** `backend/mezzio/5-qa-testing-audit.md`
 - **Renamed/Adjusted:** Yes
-- **Reasoning:** Source name (`5-qa-audit.md`) was generic. Renamed to kebab-case naming the converted scope: `mezzio-qa-testing-audit.md`.
+- **Reasoning:** Source name (`5-qa-audit.md`) was generic. Renamed to numbered kebab-case naming the converted scope: `5-qa-testing-audit.md`.
 
 ## 2. 💡 Applied Framework Conversions (NestJS → Mezzio/Laminas)
 - Replaced Jest/Vitest with PHPUnit (and Pest) as the primary test runners; `phpunit.xml`/`pest.php` replace `jest.config.ts`/`vitest.config.ts`.

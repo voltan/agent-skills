@@ -2,16 +2,16 @@
 
 - **Execution Date:** 2026-08-11 13:15
 - **Source File (NestJS):** `backend/nestjs/2-performance-audit.md`
-- **Converted File (Mezzio):** `backend/mezzio/mezzio-architecture-performance-audit.md`
+- **Converted File (Mezzio):** `backend/mezzio/2-architecture-performance-audit.md`
 - **Report Location:** `./reports/2026-08-11/report-mezzio-architecture-performance-audit.md`
 
 ---
 
 ## 1. 🔄 File Naming Audit & Routing
 - **Source Kept Intact:** Yes (`backend/nestjs/` untouched)
-- **Target File Created:** `backend/mezzio/mezzio-architecture-performance-audit.md`
+- **Target File Created:** `backend/mezzio/2-architecture-performance-audit.md`
 - **Renamed/Adjusted:** Yes
-- **Reasoning:** Source name (`2-performance-audit.md`) was generic/numbered. Renamed to kebab-case naming the converted scope: `mezzio-architecture-performance-audit.md`.
+- **Reasoning:** Source name (`2-performance-audit.md`) was generic/numbered. Renamed to numbered kebab-case naming the converted scope: `2-architecture-performance-audit.md`.
 
 ## 2. 💡 Applied Framework Conversions (NestJS → Mezzio/Laminas)
 - Mapped Controller → Service → Repository layering to Mezzio Handler → Service → Repository (PSR-15 RequestHandlerInterface), keeping controllers/handlers thin.

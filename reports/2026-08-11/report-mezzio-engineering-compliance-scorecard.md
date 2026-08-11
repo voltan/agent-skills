@@ -2,16 +2,16 @@
 
 - **Execution Date:** 2026-08-11 13:15
 - **Source File (NestJS):** `backend/nestjs/4-compliance-audit.md`
-- **Converted File (Mezzio):** `backend/mezzio/mezzio-engineering-compliance-scorecard.md`
+- **Converted File (Mezzio):** `backend/mezzio/4-engineering-compliance-scorecard.md`
 - **Report Location:** `./reports/2026-08-11/report-mezzio-engineering-compliance-scorecard.md`
 
 ---
 
 ## 1. 🔄 File Naming Audit & Routing
 - **Source Kept Intact:** Yes (`backend/nestjs/` untouched)
-- **Target File Created:** `backend/mezzio/mezzio-engineering-compliance-scorecard.md`
+- **Target File Created:** `backend/mezzio/4-engineering-compliance-scorecard.md`
 - **Renamed/Adjusted:** Yes
-- **Reasoning:** Source name (`4-compliance-audit.md`) was generic. Renamed to kebab-case naming the converted deliverable: `mezzio-engineering-compliance-scorecard.md`.
+- **Reasoning:** Source name (`4-compliance-audit.md`) was generic. Renamed to numbered kebab-case naming the converted deliverable: `4-engineering-compliance-scorecard.md`.
 
 ## 2. 💡 Applied Framework Conversions (NestJS → Mezzio/Laminas)
 - Replaced NestJS-specific scorecard domains (NestJS Best Practices, TypeORM Best Practices, Interceptors/Guards/Pipes) with Mezzio & PSR Standards, PHP 8.x Best Practices, and Doctrine/Laminas\Db Best Practices domains.

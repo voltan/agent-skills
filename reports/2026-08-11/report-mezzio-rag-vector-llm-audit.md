@@ -2,14 +2,14 @@
 
 - **Execution Date:** 2026-08-11 13:15
 - **Source File (NestJS):** `backend/nestjs/10-rag-vector-llm-audit.md`
-- **Converted File (Mezzio):** `backend/mezzio/mezzio-rag-vector-llm-audit.md`
+- **Converted File (Mezzio):** `backend/mezzio/10-rag-vector-llm-audit.md`
 - **Report Location:** `./reports/2026-08-11/report-mezzio-rag-vector-llm-audit.md`
 
 ---
 
 ## 1. 🔄 File Naming Audit & Routing
 - **Source Kept Intact:** Yes (`backend/nestjs/` untouched)
-- **Target File Created:** `backend/mezzio/mezzio-rag-vector-llm-audit.md`
+- **Target File Created:** `backend/mezzio/10-rag-vector-llm-audit.md`
 - **Renamed/Adjusted:** Yes
 - **Reasoning:** Source name (`10-rag-vector-llm-audit.md`) was already kebab-case; prefixed with `mezzio-` to match the converted suite convention.
 

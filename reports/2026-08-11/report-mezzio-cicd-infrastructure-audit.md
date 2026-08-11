@@ -2,16 +2,16 @@
 
 - **Execution Date:** 2026-08-11 13:15
 - **Source File (NestJS):** `backend/nestjs/7-cicd-infrastructure.md`
-- **Converted File (Mezzio):** `backend/mezzio/mezzio-cicd-infrastructure-audit.md`
+- **Converted File (Mezzio):** `backend/mezzio/7-cicd-infrastructure-audit.md`
 - **Report Location:** `./reports/2026-08-11/report-mezzio-cicd-infrastructure-audit.md`
 
 ---
 
 ## 1. 🔄 File Naming Audit & Routing
 - **Source Kept Intact:** Yes (`backend/nestjs/` untouched)
-- **Target File Created:** `backend/mezzio/mezzio-cicd-infrastructure-audit.md`
+- **Target File Created:** `backend/mezzio/7-cicd-infrastructure-audit.md`
 - **Renamed/Adjusted:** Yes
-- **Reasoning:** Source name (`7-cicd-infrastructure.md`) was generic. Renamed to kebab-case naming the converted scope: `mezzio-cicd-infrastructure-audit.md`.
+- **Reasoning:** Source name (`7-cicd-infrastructure.md`) was generic. Renamed to numbered kebab-case naming the converted scope: `7-cicd-infrastructure-audit.md`.
 
 ## 2. 💡 Applied Framework Conversions (NestJS → Mezzio/Laminas)
 - Replaced the Node.js Dockerfile baseline with a PHP 8.3 FPM-alpine multi-stage Dockerfile (Composer build stage, `composer install --no-dev --optimize-autoloader --classmap-authoritative`, `USER www-data`).

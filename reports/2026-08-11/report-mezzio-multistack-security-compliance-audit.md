@@ -2,16 +2,16 @@
 
 - **Execution Date:** 2026-08-11 13:15
 - **Source File (NestJS):** `backend/nestjs/12-universal-targeted-security-audit.md`
-- **Converted File (Mezzio):** `backend/mezzio/mezzio-multistack-security-compliance-audit.md`
+- **Converted File (Mezzio):** `backend/mezzio/12-multistack-security-compliance-audit.md`
 - **Report Location:** `./reports/2026-08-11/report-mezzio-multistack-security-compliance-audit.md`
 
 ---
 
 ## 1. 🔄 File Naming Audit & Routing
 - **Source Kept Intact:** Yes (`backend/nestjs/` untouched)
-- **Target File Created:** `backend/mezzio/mezzio-multistack-security-compliance-audit.md`
+- **Target File Created:** `backend/mezzio/12-multistack-security-compliance-audit.md`
 - **Renamed/Adjusted:** Yes
-- **Reasoning:** Source was a mixed-stack audit (PHP Laminas + NestJS + Vue.js). Post-migration, the NestJS backend is out of scope, so the name now reflects the converted stack: `mezzio-multistack-security-compliance-audit.md`.
+- **Reasoning:** Source was a mixed-stack audit (PHP Laminas + NestJS + Vue.js). Post-migration, the NestJS backend is out of scope, so the name now reflects the converted stack: `12-multistack-security-compliance-audit.md`.
 
 ## 2. 💡 Applied Framework Conversions (NestJS → Mezzio/Laminas)
 - Replaced the three-stack fingerprint (PHP Laminas + NestJS + Vue) with a two-stack fingerprint: Mezzio/Laminas (PHP 8.x) + Vue.js; legacy NestJS explicitly marked OUT OF SCOPE (covered by Prompts 1-11) to prevent double-auditing.

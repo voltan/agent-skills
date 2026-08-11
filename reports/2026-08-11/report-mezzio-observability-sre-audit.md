@@ -2,16 +2,16 @@
 
 - **Execution Date:** 2026-08-11 13:15
 - **Source File (NestJS):** `backend/nestjs/6-observability-sre-audit.md`
-- **Converted File (Mezzio):** `backend/mezzio/mezzio-observability-sre-audit.md`
+- **Converted File (Mezzio):** `backend/mezzio/6-observability-sre-audit.md`
 - **Report Location:** `./reports/2026-08-11/report-mezzio-observability-sre-audit.md`
 
 ---
 
 ## 1. 🔄 File Naming Audit & Routing
 - **Source Kept Intact:** Yes (`backend/nestjs/` untouched)
-- **Target File Created:** `backend/mezzio/mezzio-observability-sre-audit.md`
+- **Target File Created:** `backend/mezzio/6-observability-sre-audit.md`
 - **Renamed/Adjusted:** Yes
-- **Reasoning:** Source name (`6-observability-sre-audit.md`) was generic. Renamed to kebab-case naming the converted scope: `mezzio-observability-sre-audit.md`.
+- **Reasoning:** Source name (`6-observability-sre-audit.md`) was generic. Renamed to numbered kebab-case naming the converted scope: `6-observability-sre-audit.md`.
 
 ## 2. 💡 Applied Framework Conversions (NestJS → Mezzio/Laminas)
 - Replaced NestJS Interceptor-based trace context with PSR-15 `TraceContextMiddleware` attaching `X-Request-Id` and logging start/end with correlation IDs.

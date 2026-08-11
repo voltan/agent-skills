@@ -2,16 +2,16 @@
 
 - **Execution Date:** 2026-08-11 13:15
 - **Source File (NestJS):** `backend/nestjs/9-resilience-multitenancy-governance.md`
-- **Converted File (Mezzio):** `backend/mezzio/mezzio-resilience-multitenancy-governance.md`
+- **Converted File (Mezzio):** `backend/mezzio/9-resilience-multitenancy-governance.md`
 - **Report Location:** `./reports/2026-08-11/report-mezzio-resilience-multitenancy-governance.md`
 
 ---
 
 ## 1. 🔄 File Naming Audit & Routing
 - **Source Kept Intact:** Yes (`backend/nestjs/` untouched)
-- **Target File Created:** `backend/mezzio/mezzio-resilience-multitenancy-governance.md`
+- **Target File Created:** `backend/mezzio/9-resilience-multitenancy-governance.md`
 - **Renamed/Adjusted:** Yes
-- **Reasoning:** Source name (`9-resilience-multitenancy-governance.md`) was already kebab-case but framework-neutral; prefixed with `mezzio-` to match the converted suite convention.
+- **Reasoning:** Source name (`9-resilience-multitenancy-governance.md`) was already kebab-case; the `mezzio-` prefix added during conversion was dropped to match the user's numbered naming.
 
 ## 2. 💡 Applied Framework Conversions (NestJS → Mezzio/Laminas)
 - Replaced NestJS `AsyncLocalStorage<TenantContext>` with a typed `TenantContext` readonly DTO attached to PSR-7 request attributes via `TenantContextMiddleware`.

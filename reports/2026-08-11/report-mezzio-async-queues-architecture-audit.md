@@ -2,16 +2,16 @@
 
 - **Execution Date:** 2026-08-11 13:15
 - **Source File (NestJS):** `backend/nestjs/8-async-architecture-audit.md`
-- **Converted File (Mezzio):** `backend/mezzio/mezzio-async-queues-architecture-audit.md`
+- **Converted File (Mezzio):** `backend/mezzio/8-async-queues-architecture-audit.md`
 - **Report Location:** `./reports/2026-08-11/report-mezzio-async-queues-architecture-audit.md`
 
 ---
 
 ## 1. 🔄 File Naming Audit & Routing
 - **Source Kept Intact:** Yes (`backend/nestjs/` untouched)
-- **Target File Created:** `backend/mezzio/mezzio-async-queues-architecture-audit.md`
+- **Target File Created:** `backend/mezzio/8-async-queues-architecture-audit.md`
 - **Renamed/Adjusted:** Yes
-- **Reasoning:** Source name (`8-async-architecture-audit.md`) was generic. Renamed to kebab-case naming the converted scope: `mezzio-async-queues-architecture-audit.md`.
+- **Reasoning:** Source name (`8-async-architecture-audit.md`) was generic. Renamed to numbered kebab-case naming the converted scope: `8-async-queues-architecture-audit.md`.
 
 ## 2. 💡 Applied Framework Conversions (NestJS → Mezzio/Laminas)
 - Replaced BullMQ/RabbitMQ references with `php-amqplib/php-amqplib` (AMQP), Enqueue, and Symfony Messenger transports; `@Processor`/`Job<T>` become typed consumer classes.

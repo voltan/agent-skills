@@ -2,16 +2,16 @@
 
 - **Execution Date:** 2026-08-11 13:15
 - **Source File (NestJS):** `backend/nestjs/3-typeorm-audit.md`
-- **Converted File (Mezzio):** `backend/mezzio/mezzio-database-layer-audit.md`
+- **Converted File (Mezzio):** `backend/mezzio/3-database-layer-audit.md`
 - **Report Location:** `./reports/2026-08-11/report-mezzio-database-layer-audit.md`
 
 ---
 
 ## 1. 🔄 File Naming Audit & Routing
 - **Source Kept Intact:** Yes (`backend/nestjs/` untouched)
-- **Target File Created:** `backend/mezzio/mezzio-database-layer-audit.md`
+- **Target File Created:** `backend/mezzio/3-database-layer-audit.md`
 - **Renamed/Adjusted:** Yes
-- **Reasoning:** Source named after the ORM (`3-typeorm-audit.md`). Renamed to kebab-case describing the converted scope: `mezzio-database-layer-audit.md` (TypeORM → Doctrine ORM / Laminas\Db).
+- **Reasoning:** Source named after the ORM (`3-typeorm-audit.md`). Renamed to numbered kebab-case describing the converted scope: `3-database-layer-audit.md` (TypeORM → Doctrine ORM / Laminas\Db).
 
 ## 2. 💡 Applied Framework Conversions (NestJS → Mezzio/Laminas)
 - Replaced TypeORM entities/`@Entity()` decorators with Doctrine attributes (`#[Entity]`, `#[Column]`, `#[Index]`, `#[UniqueConstraint]`, `#[Version]`).

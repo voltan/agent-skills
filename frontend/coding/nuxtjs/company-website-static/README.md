@@ -36,7 +36,7 @@ Copy `run-website-builder.md` (the runner) into the website project root.
 
 ### 4. Copy and fill the project configuration
 
-Copy the `project-config/` folder into the website project root, rename `project-config.example.md` to `project-config.md`, and fill in the brand settings — colors, design direction, logo files (into `project-config/brand/`), and design sample images (into `project-config/references/`). See [Project Configuration](#project-configuration-project-config).
+Copy the `project-config/` folder into the website project root, rename `project-config.example.md` to `project-config.md`, and fill in the brand settings — colors, design direction, logo files (into `project-config/brand/`), and design sample images (into `project-config/references/`). **To have a design implemented from Figma, paste the Figma link in the Design Source section.** See [Project Configuration](#project-configuration-project-config) and [Figma-to-Nuxt](#figma-to-nuxt-skills19-figma-to-nuxt).
 
 ### 5. Start the AI coding agent
 
@@ -147,7 +147,8 @@ company-website-static/
 │   ├── 15-accessibility/      ← skill: WCAG 2.2 AA audit + remediation
 │   ├── 16-seo/                ← skill: SEO implementation + audit
 │   ├── 17-performance/        ← skill: performance audit + optimization
-│   └── 18-visual-qa/          ← skill: screenshot-based visual QA
+│   ├── 18-visual-qa/          ← skill: screenshot-based visual QA
+│   └── 19-figma-to-nuxt/      ← scenario-based support skill: Figma link/screenshot → pixel-accurate Nuxt (loaded when a Figma source is provided)
 └── project-config/            ← per-project brand configuration template
     ├── README.md              ← how to use this folder
     ├── project-config.example.md ← the template to copy and fill per website
@@ -224,9 +225,34 @@ Anything left empty is proposed by the agent during Discovery (02) and Design Sy
 - **01 Project Init** verifies `project-config/` exists and scaffolds the template if missing.
 - **02 Discovery** reads `project-config.md` first and never re-asks for anything already provided.
 - **03 Design System** uses the configured colors/typography/direction as the base and honors them like user decisions.
+- **Figma (`skills/19-figma-to-nuxt/`)** — if the config declares a Figma URL, the Figma design becomes the visual source of truth: it is analyzed and drives the Design System and pages (see [Figma-to-Nuxt](#figma-to-nuxt-skills19-figma-to-nuxt)).
 - **07–12 Pages** use the configured logo and brand assets; **13 Content** uses the content notes; **16 SEO** uses the logo; **18 Visual QA** compares the result against the reference images.
 
 > **Rule:** configuration values are user input — treat them like approved decisions and never silently override them (Cross-Skill Rule 2).
+
+---
+
+## Figma-to-Nuxt (`skills/19-figma-to-nuxt/`)
+
+You can provide the design as a **Figma link** (or screenshots/exported frames) and have it implemented as a static Nuxt website.
+
+### How to provide a Figma design
+
+1. Paste the **Figma URL** into `project-config.md` → **Design Source** section (or just give the link to the agent in your request).
+2. Optionally add screenshots/exported frames to `project-config/references/` as a fallback.
+3. Optionally set the **scope**: `FULL_WEBSITE`, `NEW_PAGE`, `PAGE_REDESIGN`, `COMPONENT_REDESIGN`, or `DESIGN_SYSTEM_UPDATE`.
+
+### What the agent does
+
+The agent loads `skills/19-figma-to-nuxt/skill.md` and:
+
+1. Attempts to inspect the Figma link (tools permitting). If it cannot open the Figma, it does **not** pretend — it requests screenshots/exported assets instead, and clearly marks what is `Observed` vs `Inferred`.
+2. Analyzes the design (layout, typography, colors, components, visual language, interactions) and writes `.website-builder/figma-implementation.md` — the bridge between the design and the code.
+3. Extracts **design tokens** from the Figma values and maps Figma elements onto existing layout primitives, widgets, and the animation system — reusing instead of rebuilding.
+4. Implements pages, responsive behavior, interactions, and animations (respecting `prefers-reduced-motion`), then runs **Visual QA** by comparing screenshots against the Figma frames at matching dimensions (P0/P1 issues fixed before completion).
+5. Keeps the site static, accessible, SEO-ready, and performant; records deviations, missing assets, and results in `.website-builder/`.
+
+Two scenarios are supported: **A** — Figma during initial creation (Figma drives Skills 02/03), and **B** — Figma added to an existing website (smallest necessary scope, existing design system protected — a new visual direction requires your approval). See the skill for the full protocol.
 
 ---
 
@@ -358,6 +384,8 @@ The standard execution order is:
 → 13 → 14 → 15 → 16 → 17 → 18
 ```
 
+Skill **19** is **not** part of this linear chain: it is a scenario-based support skill loaded only when a Figma link/screenshot is provided (see [Figma-to-Nuxt](#figma-to-nuxt-skills19-figma-to-nuxt)).
+
 | # | Skill | What it does |
 | :--- | :--- | :--- |
 | 00 | Orchestration | Project state, execution plan, mode, no-override guard |
@@ -379,6 +407,7 @@ The standard execution order is:
 | 16 | SEO | Titles, metadata, structured data, sitemap, indexability |
 | 17 | Performance | Bundle size, images, fonts, animations, CLS, hydration |
 | 18 | Visual QA | Screenshot-based final visual validation |
+| 19 | Figma-to-Nuxt | Scenario-based: Figma link/screenshot → analysis, tokens, pixel-accurate implementation, visual comparison |
 
 Skills may be rerun when necessary (e.g., QA findings mark a skill `NEEDS_REVISION`). The orchestrator (00) decides what to rerun; the process is a loop until completion criteria are met, not a one-pass pipeline.
 
@@ -396,6 +425,7 @@ Skills may be rerun when necessary (e.g., QA findings mark a skill `NEEDS_REVISI
 - **13** must run after the pages exist (07–12) and before final QA (14–18).
 - **14–18** are the QA/validation passes; they depend on complete pages (07–13) and can be rerun.
 - **18** is the final gate; nothing ships without an acceptable Visual QA.
+- **19** is scenario-based, not a chain step: it loads when a Figma source is provided — feeding Skills 02/03 in a new project (Scenario A) or handling a Figma change on an existing site (Scenario B).
 
 ---
 

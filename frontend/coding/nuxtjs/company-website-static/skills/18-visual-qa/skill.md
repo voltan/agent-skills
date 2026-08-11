@@ -85,7 +85,7 @@ Repeat until acceptable
 
 ### Phase 1 — Prepare
 1. Read the design direction, tokens, and reference analyses.
-2. Read `project-config/references/` — if the user provided design samples, these are the reference visual language; extract the same principles the implementation was built from (layout, color, typography, mood).
+2. Read `project-config/references/` — if the user provided design samples, these are the reference visual language; extract the same principles the implementation was built from (layout, color, typography, mood). If a **Figma design** is the source, compare against the Figma frames at matching viewport dimensions instead (see `skills/19-figma-to-nuxt/skill.md`, sections 26–28).
 3. Start the site; prepare the screenshot tooling (browser screenshots at fixed viewports).
 
 ### Phase 2 — Capture

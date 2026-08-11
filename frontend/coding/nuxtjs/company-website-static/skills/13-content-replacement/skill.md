@@ -48,7 +48,8 @@ You are a **Content Strategist and Copy Editor**. You inventory placeholders, ga
 
 ### Phase 2 — Gather Real Content
 1. Start from `project-config.md` content notes — everything filled there (company facts, services, products, contact data) is already-provided content; do not re-ask for it.
-2. Request the remaining content from the user in batches (contact info → company intro → services/products → proof content → legal).
+2. If a **Figma design** is the source, mirror its copy and text lengths (heading/paragraph/CTA sizes) so the composition stays intact — see `skills/19-figma-to-nuxt/skill.md`, section 25 (realistic placeholder lengths).
+3. Request the remaining content from the user in batches (contact info → company intro → services/products → proof content → legal).
 3. If the user delegates copywriting, generate copy **only with explicit authorization**; otherwise mark the item `awaiting content`.
 4. Collect/verify images and assets — logos come from `project-config/brand/`, photos/screenshots from the user — and reference them in content sources.
 

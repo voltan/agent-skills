@@ -24,7 +24,7 @@ project-config/
 
 1. **Copy** this whole folder into the website project root (next to `skills/`).
 2. **Rename** `project-config.example.md` → `project-config.md`.
-3. **Fill it in** — colors, typography, design direction, content notes. Leave anything unknown empty (the agent will propose it in Skill 02/03).
+3. **Fill it in** — colors, typography, design direction, content notes. **To provide a design as a Figma link, paste the URL in the Design Source section** (or drop screenshots into `references/`). Leave anything unknown empty (the agent will propose it in Skill 02/03).
 4. **Drop assets in:**
    - Logos → `project-config/brand/` (e.g. `logo.svg`, `logo-dark.svg`, `favicon.svg`)
    - Design samples / screenshots / mockups → `project-config/references/` (e.g. `hero-style-01.jpg`)
@@ -35,6 +35,7 @@ project-config/
 - **Skill 01 (Project Init)** verifies the folder exists and scaffolds a copy of the template if missing.
 - **Skill 02 (Discovery)** reads `project-config/project-config.md` **first** and never re-asks for anything already provided there.
 - **Skill 03 (Design System)** uses the configured colors, typography, and design direction as the **base palette** and honors it like a user decision.
+- **Figma (`skills/19-figma-to-nuxt/`)** — if the config declares a **Figma URL** (or the user provides one), the agent loads the Figma-to-Nuxt skill: the Figma design becomes the visual source of truth, the agent analyzes it (or requests screenshots when it cannot open it), and Skills 02/03 build on that analysis.
 - **Skills 07–12 (Pages)** use the configured logo and brand assets.
 - **Skills 13–18 (Content & QA)** use the content notes, logo (SEO), and reference images (Visual QA) from the config.
 

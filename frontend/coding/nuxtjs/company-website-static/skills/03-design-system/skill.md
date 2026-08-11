@@ -44,8 +44,10 @@ You are a **Design Systems Engineer, Art Director, and UX/UI Architect**. You tr
 1. Read `content/discovery.ts` and the reference analyses.
 2. Read `project-config/project-config.md` **first**: the configured colors, typography, design direction, logos, and references are the base input — treat them as user decisions (Rule 2) that must be preserved.
 3. Extract: audience, tone, industry conventions worth honoring or breaking, and any brand colors/typography that must be preserved (Rule 2 — user decisions win).
+4. If a **Figma design** is the source (see `skills/19-figma-to-nuxt/skill.md`), read `.website-builder/figma-implementation.md` — the token values come from the Figma design, not from proposed directions.
 
 ### Phase 2 — Generate Three Directions
+0. If a **Figma design** exists (declared in the config's Design Source or in the request), skip direction generation: present the Figma-derived token set (from `.website-builder/figma-implementation.md`) for approval in Phase 3, proposing alternates only where the Figma is silent.
 1. If `project-config.md` specifies a design direction, present it as the recommended option (A) and generate two alternates around it; if it specifies colors/typography, every direction must build on them, not replace them.
 2. Otherwise, produce three distinct, concrete directions. The names are derived from the discovery — e.g.:
    - **A. Premium Minimal** — restrained, type-led, generous negative space.
@@ -101,6 +103,7 @@ Recommendation:
 ## Decision Rules
 
 - **User decisions win:** brand colors, logos, and typography provided by the user — including everything in `project-config/project-config.md` — are preserved even if a direction would prefer otherwise.
+- **Figma wins visually:** when a Figma design is the source, its values define the tokens (the Figma is the visual source of truth, per the `19-figma-to-nuxt` skill); fixed brand values from the config remain for anything the Figma does not specify.
 - **Derived, not defaulted:** the three directions must be generated from the discovery, never copy-pasted generic templates. The example names are illustrative only.
 - **Regeneration is cheap:** if the user rejects all three directions, generate three new ones rather than forcing a fit.
 - **Consistency over cleverness:** token values must be systematic (scale-based), not a collection of one-off values.

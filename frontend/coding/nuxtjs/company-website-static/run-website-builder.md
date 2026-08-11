@@ -38,7 +38,8 @@ my-company-website/
 │   ├── 01-project-init/
 │   ├── 02-discovery/
 │   ├── ...
-│   └── 18-visual-qa/
+│   ├── 18-visual-qa/
+│   └── 19-figma-to-nuxt/      ← scenario-based support skill: Figma link/screenshot → pixel-accurate Nuxt
 │
 ├── project-config/
 │   ├── project-config.md   ← brand input: colors, direction, logos, references
@@ -161,6 +162,16 @@ project-config/
 
 If `project-config/` does not exist, Skill 01 scaffolds an empty `project-config/project-config.md` (from the `project-config.example.md` template when available) so the user can fill in colors, logos, and references before Discovery (02). The workflow continues with direct questions in Discovery (02) as usual.
 
+## 4.4 Design Source (Figma)
+
+If the user provides a **Figma URL** (in `project-config.md` → Design Source, or directly in the request) or design screenshots:
+
+1. Load `skills/19-figma-to-nuxt/skill.md` — it governs the Figma workflow (analysis, specification, token extraction, component mapping, pixel-accurate implementation, visual comparison).
+2. Attempt to inspect the Figma link. If it cannot be opened, **do not pretend** — request screenshots/exported frames/assets and clearly mark `Observed` vs `Inferred`.
+3. The Figma design becomes the **visual source of truth** for colors, typography, layout, and components. Fixed brand values from `project-config/` that the Figma does not address (logo, favicon, contact data) remain in force; conflicts are recorded as deviations (see the Figma skill, section 30).
+4. Scenario A (initial creation): Figma analysis feeds Skills 02 (Discovery) and 03 (Design System) — tokens are extracted from the design instead of proposing directions from scratch. Scenario B (existing website): apply the smallest scope (`NEW_PAGE` / `PAGE_REDESIGN` / `COMPONENT_REDESIGN` / `DESIGN_SYSTEM_UPDATE` / `FULL_WEBSITE`) and never rebuild the whole site without being asked.
+5. The Figma analysis and spec are stored in `.website-builder/figma-implementation.md`; results and deviations go into the standard history files.
+
 ---
 
 # 5. Never Modify Skills During Normal Execution
@@ -203,7 +214,7 @@ Before executing any Skill:
 1. Identify the project root.
 2. Inspect the current filesystem.
 3. Inspect `skills/`.
-4. Inspect `project-config/` if it exists (`project-config.md`, `brand/`, `references/`).
+4. Inspect `project-config/` if it exists (`project-config.md`, `brand/`, `references/`) and note any **Figma URL / design source** declared in the Design Source section (load `skills/19-figma-to-nuxt/skill.md` when one exists).
 5. Inspect `.website-builder/` if it exists.
 6. Inspect the existing Nuxt project.
 7. Inspect existing pages.
@@ -490,6 +501,8 @@ Execute Skills in this order:
 → 13 → 14 → 15 → 16 → 17 → 18
 ```
 
+Skill **19** (Figma-to-Nuxt) is **not** part of this chain — it is a scenario-based support skill loaded only when a Figma link/screenshot is provided (see section 4.4).
+
 The Skill files are:
 
 ```text
@@ -512,6 +525,12 @@ skills/15-accessibility/skill.md
 skills/16-seo/skill.md
 skills/17-performance/skill.md
 skills/18-visual-qa/skill.md
+```
+
+For Figma design sources, also load:
+
+```text
+skills/19-figma-to-nuxt/skill.md
 ```
 
 For Services, also read:

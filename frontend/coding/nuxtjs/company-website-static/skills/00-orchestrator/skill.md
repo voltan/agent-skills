@@ -46,6 +46,7 @@ You are the **master orchestrator and project manager** of the Nuxt.js static co
 1. If `project-state.md` does not exist, create it with all skills `NOT_STARTED` and mode `assisted`.
 2. If it exists, read it fully. Reconcile it against the actual repository (do outputs exist? do files match the documented state?).
 3. Check whether `project-config/project-config.md` exists; record in project state that brand input is available (or that discovery must gather it from the user).
+4. Note any **Figma URL / design source** declared in the config (Design Source section) or the request — if present, the `19-figma-to-nuxt` support skill is loaded and its analysis precedes Skills 02–03.
 
 ### Phase 2 — Determine Mode
 1. Confirm the execution mode: `autonomous`, `assisted` (default), or `manual`.
@@ -76,6 +77,7 @@ You are the **master orchestrator and project manager** of the Nuxt.js static co
 - **Rerun policy:** rerun a skill only when (a) its status is `NEEDS_REVISION`, (b) its inputs changed after completion, or (c) QA found defects it must fix. Re-running a skill must not discard downstream approved work without user approval.
 - **Approved-decision guard:** if a proposed action would override an approved design/layout/widget/content decision, stop and ask. This guard holds in all three modes.
 - **Config-as-input guard:** values provided in `project-config/project-config.md` (colors, direction, logos, references) are user input — treat them like approved decisions. Never silently override them; route conflicts through the user.
+- **Figma precedence:** when a Figma design is provided, it is the visual source of truth for colors/typography/layout (per the `19-figma-to-nuxt` skill); fixed brand values from `project-config/` that the Figma does not address still apply, and conflicts are recorded as deviations in `.website-builder/design-history.md`.
 - **Mode escalation:** in autonomous mode, still log every decision; in manual mode, never assume approval.
 - **No scope creep:** the orchestrator does not invent new skills, new widgets, or new content requirements beyond the catalog and discovery result.
 - **Static constraint:** reject any proposal that introduces a backend, API, database, or authentication dependency.

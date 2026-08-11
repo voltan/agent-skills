@@ -130,8 +130,10 @@ frontend/coding/nuxtjs/company-website-static/
 │   │   └── skill.md
 │   ├── 17-performance/
 │   │   └── skill.md
-│   └── 18-visual-qa/
-│       └── skill.md
+│   ├── 18-visual-qa/
+│   │   └── skill.md
+│   └── 19-figma-to-nuxt/
+│       └── skill.md            ← scenario-based support skill: Figma link/screenshot → pixel-accurate Nuxt
 │
 └── project-config/            ← per-project brand configuration template
     ├── README.md              ← how to use this folder
@@ -141,6 +143,8 @@ frontend/coding/nuxtjs/company-website-static/
 ```
 
 The **project configuration** (`project-config/`) is the per-website brand input: colors, design direction, layout preferences, logo files, design references, and content notes. The user copies the folder into each website, renames `project-config.example.md` to `project-config.md`, fills it in, and drops logos into `brand/` and design sample images into `references/`. Skills 02 (Discovery) and 03 (Design System) read it first and treat its values like approved user decisions; the runner (`run-website-builder.md`) documents the full protocol.
+
+A **Figma design source** (a URL pasted in the config's Design Source section, or screenshots in `references/`) is handled by the `19-figma-to-nuxt` support skill: the Figma design becomes the visual source of truth, the agent analyzes it (or requests screenshots when it cannot open it), and Skills 02/03 build on that analysis instead of proposing directions from scratch.
 
 ---
 

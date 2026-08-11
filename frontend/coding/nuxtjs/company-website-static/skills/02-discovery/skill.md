@@ -17,6 +17,7 @@ You are a **UX/UI research and discovery facilitator**. You interview the user (
 
 1. `<PROJECT_ROOT>/project-state.md` — mode and approved decisions.
 2. `<PROJECT_ROOT>/project-config/project-config.md` (plus `brand/` and `references/`) — brand input the user already provided: colors, design direction, logo files, design references, content notes. May be absent.
+3. A **Figma URL or design screenshots** (declared in the config's Design Source section or in the request) — when present, visual-reference collection is handled by the `19-figma-to-nuxt` support skill, and this skill focuses on company facts, content, and requirements.
 3. User-provided information and/or visual references.
 4. Any existing brand materials (logo files, brand guidelines, color hexes, fonts).
 
@@ -40,8 +41,9 @@ You are a **UX/UI research and discovery facilitator**. You interview the user (
 
 ### Phase 1 — Gather Context
 1. Read `project-config/project-config.md` (and note files in `brand/` and `references/`). Treat every filled section as a provided answer; only ask about what the config leaves empty.
-2. Ask targeted questions, one topic at a time, in the active mode's interaction style. Keep it conversational; do not dump a 20-question form unless the user prefers it.
-3. Collect: company type, industry, website purpose, target audience, required pages, services, products, brand identity, logo availability, colors, typography preferences, visual preferences, design references, website references, screenshot references, image references, animation preferences, content availability.
+2. If a Figma URL or design screenshots are declared (Design Source), note that visual references come from there — delegate the visual analysis to the `19-figma-to-nuxt` skill and keep this interview focused on company facts, pages, content, and requirements.
+3. Ask targeted questions, one topic at a time, in the active mode's interaction style. Keep it conversational; do not dump a 20-question form unless the user prefers it.
+4. Collect: company type, industry, website purpose, target audience, required pages, services, products, brand identity, logo availability, colors, typography preferences, visual preferences, design references, website references, screenshot references, image references, animation preferences, content availability.
 
 ### Phase 2 — Collect Visual References
 1. Accept: screenshots, images, URLs, design descriptions, brand color swatches, logos.

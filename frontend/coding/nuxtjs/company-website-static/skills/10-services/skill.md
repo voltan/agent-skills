@@ -20,7 +20,8 @@ You are a **UX/UI Architect and Information Designer**. You structure the servic
 2. `content/discovery.ts` — services, categories, industries.
 3. `content/services.ts` — service records (slug, title, summary, category, features).
 4. `widget-catalog.md`, `creativity-rules.md`.
-5. `project-state.md`.
+5. `project-config/project-config.md` — brand input (services/content notes, logo).
+6. `project-state.md`.
 
 ## Outputs
 
@@ -51,7 +52,8 @@ You are a **UX/UI Architect and Information Designer**. You structure the servic
 
 ### Phase 1 — Analyze
 1. Read `content/services.ts`: how many services, categories, and what each promises.
-2. Decide the listing presentation (grid, grouped by category, bento).
+2. Cross-check with `project-config.md` content notes (services the user listed are authoritative).
+3. Decide the listing presentation (grid, grouped by category, bento).
 
 ### Phase 2 — Propose Architecture
 1. Widget sequence with rationale (e.g., HeroMinimal → ServicesGrid (grouped) → Benefits → ProcessTimeline → CTASection).

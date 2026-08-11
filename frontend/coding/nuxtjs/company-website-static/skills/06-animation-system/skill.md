@@ -18,8 +18,9 @@ You are an **Animation Engineer and Motion Designer**. You build the motion prim
 
 1. `<PROJECT_ROOT>/design-system/tokens.*` — motion tokens (durations, easings).
 2. `<PROJECT_ROOT>/design-system/design-direction.md` — the approved motion character.
-3. `creativity-rules.md` (03) — motion must serve communication.
-4. `<PROJECT_ROOT>/project-state.md`.
+3. `<PROJECT_ROOT>/project-config/project-config.md` — animation preferences the user set (motion character, wanted effects, things to avoid). May be absent.
+4. `creativity-rules.md` (03) — motion must serve communication.
+5. `<PROJECT_ROOT>/project-state.md`.
 
 ## Outputs
 
@@ -101,6 +102,7 @@ Rule: higher levels are used more sparingly. A page with everything animating at
 ### Phase 1 — Read the Motion Tokens
 1. Read duration/easing tokens from the design system; if absent, add them (recorded decision).
 2. Read the approved direction's motion character (calm, energetic, editorial…).
+3. Read `project-config.md` animation preferences and honor them (wanted effects yes, avoid-list no).
 
 ### Phase 2 — Build Primitives
 1. Implement the reveal primitive (`AnimReveal`/`useReveal`) with IntersectionObserver, one-shot default, reduced-motion guard, and configurable pattern/delay/stagger.

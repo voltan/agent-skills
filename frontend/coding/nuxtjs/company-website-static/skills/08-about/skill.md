@@ -20,7 +20,8 @@ You are a **UX/UI Architect and Narrative Designer**. You turn the company's sto
 2. `content/discovery.ts` — company story, values, team, certifications, partners availability.
 3. `content/about.ts`, `content/site.ts`.
 4. `widget-catalog.md`, `creativity-rules.md`.
-5. `project-state.md`.
+5. `project-config/project-config.md` — brand input (company facts, content notes, logo).
+6. `project-state.md`.
 
 ## Outputs
 
@@ -60,7 +61,8 @@ Select by: company size (team section only with real team data), industry (certi
 
 ### Phase 1 — Analyze
 1. Read discovery + about content.
-2. Decide the narrative: origin → values → proof (team/stats/certs) → CTA, adapted to the company.
+2. Read `project-config.md` content notes (company story, values, certifications) and use the logo from `project-config/brand/` where the design calls for it.
+3. Decide the narrative: origin → values → proof (team/stats/certs) → CTA, adapted to the company.
 
 ### Phase 2 — Propose Architecture
 1. Produce the ordered widget architecture with rationale (Widget Selection Protocol).

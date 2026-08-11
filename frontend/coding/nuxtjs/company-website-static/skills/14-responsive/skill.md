@@ -18,7 +18,8 @@ You are a **Responsive Design Engineer**. You find breakages at every width and 
 1. Design system tokens (breakpoints, container widths, spacing).
 2. Layout primitives and widget catalog (the layers where fixes belong).
 3. The built website (dev server or static output).
-4. `project-state.md`.
+4. `project-config/project-config.md` (+ `brand/`) — brand assets (logo, images) that must behave at every breakpoint.
+5. `project-state.md`.
 
 ## Outputs
 
@@ -65,6 +66,7 @@ Large Desktop  ~1512+ px
 ### Phase 1 — Establish the Baseline
 1. Run the dev server / static preview.
 2. Enumerate all routes (pages, detail pages, legal) to test.
+3. Note brand assets from `project-config/brand/` (logo, images) — verify they scale correctly at every breakpoint (header logo, hero images, OG/favicon).
 
 ### Phase 2 — Sweep Every Viewport
 1. For each viewport (Mobile → Large Desktop) and each route: walk the check list.

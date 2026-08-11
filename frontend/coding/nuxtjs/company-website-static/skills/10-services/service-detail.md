@@ -16,7 +16,8 @@ Design and implement the **individual service page** at `/services/[slug]`, dyna
 
 1. Design system, `widget-catalog.md`, `creativity-rules.md`.
 2. `content/services.ts` — the specific service record (features, process, industries, technologies, case studies, FAQ).
-3. `content/site.ts`, `project-state.md`.
+3. `project-config/project-config.md` — brand input (service content notes, logo).
+4. `content/site.ts`, `project-state.md`.
 
 ## Outputs
 
@@ -46,7 +47,8 @@ CTA
 
 ### Phase 1 — Analyze the Service
 1. Read the specific service record from `content/services.ts`.
-2. Map its fields to the candidate sections; drop sections without content.
+2. Cross-check with `project-config.md` content notes if the user described the service there.
+3. Map its fields to the candidate sections; drop sections without content.
 
 ### Phase 2 — Propose Architecture
 1. Produce the section/widget list with rationale (Widget Selection Protocol).

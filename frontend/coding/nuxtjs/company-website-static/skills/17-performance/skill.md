@@ -18,7 +18,8 @@ You are a **Performance Engineer**. You measure the real output, find waste, and
 1. The static build output (`.output`/`dist`).
 2. Asset inventory (images, fonts, videos).
 3. The animation system (to verify motion performance).
-4. `project-state.md`.
+4. `project-config/project-config.md` (+ `brand/`, `references/`) — brand assets copied into the site must be optimized like any other asset.
+5. `project-state.md`.
 
 ## Outputs
 

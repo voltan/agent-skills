@@ -85,69 +85,62 @@ Create this exact structure:
 ```text
 frontend/coding/nuxtjs/company-website-static/
 │
-├── README.md
+├── README.md                  ← this document
+├── run-website-builder.md     ← the runner: execution entry point for AI agents
+├── master-prompt.md           ← this master prompt
 │
-├── 00-orchestrator/
-│   └── skill.md
+├── skills/                    ← reusable skills (numbered folders; copied into each website)
+│   ├── 00-orchestrator/
+│   │   └── skill.md
+│   ├── 01-project-init/
+│   │   └── skill.md
+│   ├── 02-discovery/
+│   │   └── skill.md
+│   ├── 03-design-system/
+│   │   ├── skill.md
+│   │   └── creativity-rules.md
+│   ├── 04-layout-system/
+│   │   └── skill.md
+│   ├── 05-widget-library/
+│   │   ├── skill.md
+│   │   └── widget-catalog.md
+│   ├── 06-animation-system/
+│   │   └── skill.md
+│   ├── 07-homepage/
+│   │   └── skill.md
+│   ├── 08-about/
+│   │   └── skill.md
+│   ├── 09-contact/
+│   │   └── skill.md
+│   ├── 10-services/
+│   │   ├── skill.md
+│   │   └── service-detail.md
+│   ├── 11-products/
+│   │   ├── skill.md
+│   │   └── product-detail.md
+│   ├── 12-legal/
+│   │   └── skill.md
+│   ├── 13-content-replacement/
+│   │   └── skill.md
+│   ├── 14-responsive/
+│   │   └── skill.md
+│   ├── 15-accessibility/
+│   │   └── skill.md
+│   ├── 16-seo/
+│   │   └── skill.md
+│   ├── 17-performance/
+│   │   └── skill.md
+│   └── 18-visual-qa/
+│       └── skill.md
 │
-├── 01-project-init/
-│   └── skill.md
-│
-├── 02-discovery/
-│   └── skill.md
-│
-├── 03-design-system/
-│   ├── skill.md
-│   └── creativity-rules.md
-│
-├── 04-layout-system/
-│   └── skill.md
-│
-├── 05-widget-library/
-│   ├── skill.md
-│   └── widget-catalog.md
-│
-├── 06-animation-system/
-│   └── skill.md
-│
-├── 07-homepage/
-│   └── skill.md
-│
-├── 08-about/
-│   └── skill.md
-│
-├── 09-contact/
-│   └── skill.md
-│
-├── 10-services/
-│   ├── skill.md
-│   └── service-detail.md
-│
-├── 11-products/
-│   ├── skill.md
-│   └── product-detail.md
-│
-├── 12-legal/
-│   └── skill.md
-│
-├── 13-content-replacement/
-│   └── skill.md
-│
-├── 14-responsive/
-│   └── skill.md
-│
-├── 15-accessibility/
-│   └── skill.md
-│
-├── 16-seo/
-│   └── skill.md
-│
-├── 17-performance/
-│   └── skill.md
-│
-└── 18-visual-qa/
-    └── skill.md
+└── project-config/            ← per-project brand configuration template
+    ├── README.md              ← how to use this folder
+    ├── project-config.example.md ← template copied and filled per website
+    ├── brand/                 ← logo / favicon / brand asset files
+    └── references/            ← design sample images
 ```
+
+The **project configuration** (`project-config/`) is the per-website brand input: colors, design direction, layout preferences, logo files, design references, and content notes. The user copies the folder into each website, renames `project-config.example.md` to `project-config.md`, fills it in, and drops logos into `brand/` and design sample images into `references/`. Skills 02 (Discovery) and 03 (Design System) read it first and treat its values like approved user decisions; the runner (`run-website-builder.md`) documents the full protocol.
 
 ---
 
@@ -297,6 +290,7 @@ A user should be able to provide:
 * Design description
 * Brand colors
 * Logo
+* A filled `project-config/project-config.md` (with colors, direction, logo files in `brand/`, and design samples in `references/`) — which must be read **first** and never re-asked
 * Or simply ask the AI to create the design
 
 The skill must produce a structured discovery result that later skills can consume.
@@ -340,7 +334,7 @@ B. Modern Corporate
 C. Creative Editorial
 ```
 
-However, the choices must be dynamically generated according to the discovered company and visual references.
+However, the choices must be dynamically generated according to the discovered company and visual references. When `project-config/project-config.md` already specifies colors, typography, or a design direction, those values are the base — every direction builds on them and never replaces them.
 
 The user should be able to approve, modify, or regenerate the design direction.
 

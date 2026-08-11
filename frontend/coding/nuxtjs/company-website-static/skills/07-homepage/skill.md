@@ -20,7 +20,8 @@ You are a **UX/UI Architect and Creative Web Designer**. You decide the homepage
 2. `<PROJECT_ROOT>/content/discovery.ts` — company purpose, audience, positioning.
 3. `<PROJECT_ROOT>/content/homepage.ts`, `content/site.ts` — placeholder content sources.
 4. `widget-catalog.md` (05) and `creativity-rules.md` (03).
-5. `<PROJECT_ROOT>/project-state.md`.
+5. `<PROJECT_ROOT>/project-config/project-config.md` (+ `brand/`) — brand input: logo, content notes, design preferences.
+6. `<PROJECT_ROOT>/project-state.md`.
 
 ## Outputs
 
@@ -45,7 +46,8 @@ You are a **UX/UI Architect and Creative Web Designer**. You decide the homepage
 
 ### Phase 1 — Analyze
 1. Read the design direction and discovery: what must the homepage communicate, to whom, in what tone?
-2. Read the available placeholder content and note gaps.
+2. Read `project-config.md` content notes and check `project-config/brand/` for the logo — the logo belongs in the header (and hero where appropriate) and must be used.
+3. Read the available placeholder content and note gaps.
 
 ### Phase 2 — Propose Architecture (Widget Selection Protocol)
 1. Produce the ordered architecture with per-widget rationale:

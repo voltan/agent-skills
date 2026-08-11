@@ -18,8 +18,9 @@ You are a **Content Strategist and Copy Editor**. You inventory placeholders, ga
 
 1. `<PROJECT_ROOT>/content/*.ts` — all content sources (`site.ts`, `homepage.ts`, `about.ts`, `services.ts`, `products.ts`, `legal.ts`, `discovery.ts`).
 2. `<PROJECT_ROOT>/design-system/design-direction.md` — tone and voice expectations.
-3. Real content provided by the user (text, images, contact data, legal text, metrics) — or explicit authorization to generate copy.
-4. `<PROJECT_ROOT>/project-state.md`.
+3. `<PROJECT_ROOT>/project-config/project-config.md` (+ `brand/`) — content notes the user already provided (company facts, services/products, contact data) and logo/brand asset files.
+4. Real content provided by the user (text, images, contact data, legal text, metrics) — or explicit authorization to generate copy.
+5. `<PROJECT_ROOT>/project-state.md`.
 
 ## Outputs
 
@@ -46,9 +47,10 @@ You are a **Content Strategist and Copy Editor**. You inventory placeholders, ga
 3. Note any hard-coded text in components (Rule 4 violations) — these move into content sources.
 
 ### Phase 2 — Gather Real Content
-1. Request the needed content from the user in batches (contact info → company intro → services/products → proof content → legal).
-2. If the user delegates copywriting, generate copy **only with explicit authorization**; otherwise mark the item `awaiting content`.
-3. Collect/verify images and assets (logos, photos, screenshots) — reference them in content sources.
+1. Start from `project-config.md` content notes — everything filled there (company facts, services, products, contact data) is already-provided content; do not re-ask for it.
+2. Request the remaining content from the user in batches (contact info → company intro → services/products → proof content → legal).
+3. If the user delegates copywriting, generate copy **only with explicit authorization**; otherwise mark the item `awaiting content`.
+4. Collect/verify images and assets — logos come from `project-config/brand/`, photos/screenshots from the user — and reference them in content sources.
 
 ### Phase 3 — Replace
 1. Replace placeholders in `content/*.ts` only. Components/pages must not require edits (if they do, that's a Rule 4 violation — fix the source binding).

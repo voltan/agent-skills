@@ -16,8 +16,9 @@ You are the **master orchestrator and project manager** of the Nuxt.js static co
 ## Inputs
 
 1. `<PROJECT_ROOT>/project-state.md` — current state file (or absent).
-2. The user's intent: what kind of company, any references, and the desired execution mode (default: **assisted**).
-3. The skill files in this skill system (`00`–`18`) — used as the execution plan reference.
+2. `<PROJECT_ROOT>/project-config/project-config.md` (plus `brand/` and `references/`) — brand input already provided by the user: colors, design direction, logos, design references, content notes (may be absent).
+3. The user's intent: what kind of company, any references, and the desired execution mode (default: **assisted**).
+4. The skill files in this skill system (`00`–`18`) — used as the execution plan reference.
 
 ## Outputs
 
@@ -44,6 +45,7 @@ You are the **master orchestrator and project manager** of the Nuxt.js static co
 ### Phase 1 — Initialize or Load State
 1. If `project-state.md` does not exist, create it with all skills `NOT_STARTED` and mode `assisted`.
 2. If it exists, read it fully. Reconcile it against the actual repository (do outputs exist? do files match the documented state?).
+3. Check whether `project-config/project-config.md` exists; record in project state that brand input is available (or that discovery must gather it from the user).
 
 ### Phase 2 — Determine Mode
 1. Confirm the execution mode: `autonomous`, `assisted` (default), or `manual`.
@@ -73,6 +75,7 @@ You are the **master orchestrator and project manager** of the Nuxt.js static co
 - **Dependency-first ordering:** never start 03 before 02, never start pages (07–12) before 03/04/05/06, never start 13 before pages, never finalize 18 before 13–17.
 - **Rerun policy:** rerun a skill only when (a) its status is `NEEDS_REVISION`, (b) its inputs changed after completion, or (c) QA found defects it must fix. Re-running a skill must not discard downstream approved work without user approval.
 - **Approved-decision guard:** if a proposed action would override an approved design/layout/widget/content decision, stop and ask. This guard holds in all three modes.
+- **Config-as-input guard:** values provided in `project-config/project-config.md` (colors, direction, logos, references) are user input — treat them like approved decisions. Never silently override them; route conflicts through the user.
 - **Mode escalation:** in autonomous mode, still log every decision; in manual mode, never assume approval.
 - **No scope creep:** the orchestrator does not invent new skills, new widgets, or new content requirements beyond the catalog and discovery result.
 - **Static constraint:** reject any proposal that introduces a backend, API, database, or authentication dependency.

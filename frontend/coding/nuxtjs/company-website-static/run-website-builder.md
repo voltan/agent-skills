@@ -40,6 +40,11 @@ my-company-website/
 │   ├── ...
 │   └── 18-visual-qa/
 │
+├── project-config/
+│   ├── project-config.md   ← brand input: colors, direction, logos, references
+│   ├── brand/              ← logo / favicon / brand asset files
+│   └── references/         ← design sample images
+│
 ├── .website-builder/
 │   ├── state.md
 │   ├── decisions.md
@@ -94,12 +99,29 @@ The following are website-specific state:
 
 They describe **what has already happened in this particular website**.
 
+The following is the project's brand input:
+
+```text
+project-config/
+```
+
+It describes **what the site should look like** — colors, design direction, layout preferences, logo files, design references, and content notes.
+
 Keep these concepts strictly separate.
 
 ### Skills
 
 ```text
 HOW to work
+```
+
+### Project Configuration
+
+```text
+WHAT the site should look like
+WHAT colors and fonts to use
+WHAT logos and references exist
+WHAT the user has already decided about the design
 ```
 
 ### Website State
@@ -114,7 +136,34 @@ WHY decisions were made
 
 ---
 
-# 4. Never Modify Skills During Normal Execution
+# 4. Project Configuration
+
+`project-config/` is the **brand input** for the current website — the third concept of the system (see section 3).
+
+## 4.1 Structure
+
+```text
+project-config/
+├── project-config.md     ← the configuration (filled from project-config.example.md)
+├── brand/                ← logo / favicon / brand asset files (logo.svg, logo-dark.svg, …)
+└── references/           ← design sample images (hero-style-01.jpg, mockups, …)
+```
+
+## 4.2 How to Use It
+
+1. Read `project-config/project-config.md` **before** Discovery (Skill 02) and Design System (Skill 03).
+2. Colors, typography, design direction, logos, and references provided there are **user input**: treat them like approved decisions (see section 17 — User Approval Is Persistent). Never silently override them.
+3. Reference brand/reference files from the config by relative path (e.g. `brand/logo.svg`, `references/hero-style-01.jpg`).
+4. Anything left empty in the config is proposed by the agent in Skills 02/03 and submitted for approval per the execution mode.
+5. The config is **input, not history**: approvals and changes are still recorded in `.website-builder/decisions.md` and `.website-builder/design-history.md`.
+
+## 4.3 If the Config Is Missing
+
+If `project-config/` does not exist, Skill 01 scaffolds an empty `project-config/project-config.md` (from the `project-config.example.md` template when available) so the user can fill in colors, logos, and references before Discovery (02). The workflow continues with direct questions in Discovery (02) as usual.
+
+---
+
+# 5. Never Modify Skills During Normal Execution
 
 Do not modify:
 
@@ -147,20 +196,21 @@ Only modify the reusable Skill System when the user explicitly asks you to impro
 
 ---
 
-# 5. First Task — Inspect the Current Website
+# 6. First Task — Inspect the Current Website
 
 Before executing any Skill:
 
 1. Identify the project root.
 2. Inspect the current filesystem.
 3. Inspect `skills/`.
-4. Inspect `.website-builder/` if it exists.
-5. Inspect the existing Nuxt project.
-6. Inspect existing pages.
-7. Inspect existing components.
-8. Inspect existing content.
-9. Inspect assets.
-10. Inspect the Git state if available.
+4. Inspect `project-config/` if it exists (`project-config.md`, `brand/`, `references/`).
+5. Inspect `.website-builder/` if it exists.
+6. Inspect the existing Nuxt project.
+7. Inspect existing pages.
+8. Inspect existing components.
+9. Inspect existing content.
+10. Inspect assets.
+11. Inspect the Git state if available.
 
 Do not overwrite existing work blindly.
 
@@ -168,7 +218,7 @@ This project may already contain a partially completed website.
 
 ---
 
-# 6. Website-Specific State Directory
+# 7. Website-Specific State Directory
 
 Create the following directory if it does not exist:
 
@@ -195,7 +245,7 @@ Do not create unnecessary state files.
 
 ---
 
-# 7. state.md
+# 8. state.md
 
 `state.md` is the primary execution state.
 
@@ -244,7 +294,7 @@ BLOCKED
 
 ---
 
-# 8. decisions.md
+# 9. decisions.md
 
 This file stores important decisions made during the project.
 
@@ -302,7 +352,7 @@ Do not record trivial coding decisions.
 
 ---
 
-# 9. changelog.md
+# 10. changelog.md
 
 This file is the chronological project activity log.
 
@@ -363,7 +413,7 @@ Keep this log concise but useful.
 
 ---
 
-# 10. design-history.md
+# 11. design-history.md
 
 This file stores the evolution of the visual design.
 
@@ -393,7 +443,7 @@ This prevents future changes from accidentally reverting previously approved dec
 
 ---
 
-# 11. qa-history.md
+# 12. qa-history.md
 
 Store important QA results.
 
@@ -430,7 +480,7 @@ PASS
 
 ---
 
-# 12. Execution Order
+# 13. Execution Order
 
 Execute Skills in this order:
 
@@ -490,7 +540,7 @@ skills/05-widget-library/widget-catalog.md
 
 ---
 
-# 13. Resume Existing Work
+# 14. Resume Existing Work
 
 This is a critical requirement.
 
@@ -498,12 +548,13 @@ This is a critical requirement.
 
 Before starting:
 
-1. Read `.website-builder/state.md`.
-2. Read `.website-builder/decisions.md`.
-3. Read recent entries from `.website-builder/changelog.md`.
-4. Read relevant `.website-builder/design-history.md`.
-5. Read relevant `.website-builder/qa-history.md`.
-6. Inspect the actual implementation.
+1. Read `project-config/project-config.md` (colors, direction, logos, references — the current brand input).
+2. Read `.website-builder/state.md`.
+3. Read `.website-builder/decisions.md`.
+4. Read recent entries from `.website-builder/changelog.md`.
+5. Read relevant `.website-builder/design-history.md`.
+6. Read relevant `.website-builder/qa-history.md`.
+7. Inspect the actual implementation.
 
 Determine:
 
@@ -519,7 +570,7 @@ Then continue from the correct point.
 
 ---
 
-# 14. If State and Code Conflict
+# 15. If State and Code Conflict
 
 Never blindly trust the state files.
 
@@ -546,7 +597,7 @@ The actual project implementation is the final authority for implementation stat
 
 ---
 
-# 15. Assisted Mode
+# 16. Assisted Mode
 
 Use **Assisted Mode** by default.
 
@@ -615,7 +666,7 @@ Do not ask questions about:
 
 ---
 
-# 16. User Approval Is Persistent
+# 17. User Approval Is Persistent
 
 When the user approves a decision, immediately record it in:
 
@@ -639,7 +690,7 @@ Never ask the same question again unless:
 
 ---
 
-# 17. Visual References
+# 18. Visual References
 
 If the user provides:
 
@@ -647,6 +698,7 @@ If the user provides:
 * Image
 * Website URL
 * Design reference
+* Files listed in `project-config/references/` (linked from `project-config.md`)
 
 analyze it before implementation.
 
@@ -687,7 +739,7 @@ Record the reference and extracted design principles in:
 
 ---
 
-# 18. Placeholder Content
+# 19. Placeholder Content
 
 During the initial implementation, use placeholder content.
 
@@ -715,7 +767,7 @@ skills/13-content-replacement/skill.md
 
 ---
 
-# 19. Page-by-Page Execution
+# 20. Page-by-Page Execution
 
 For every page Skill:
 
@@ -734,7 +786,7 @@ For every page Skill:
 
 ---
 
-# 20. Widget-By-Widget Workflow
+# 21. Widget-By-Widget Workflow
 
 When a page requires multiple sections, use the Widget Catalog.
 
@@ -773,7 +825,7 @@ If a new widget is genuinely required:
 
 ---
 
-# 21. Design Consistency
+# 22. Design Consistency
 
 All pages must use the approved:
 
@@ -792,7 +844,7 @@ If a page genuinely requires a new design pattern, record it as a new design dec
 
 ---
 
-# 22. Change Requests After Completion
+# 23. Change Requests After Completion
 
 This project will be modified after the initial website is completed.
 
@@ -818,7 +870,7 @@ Instead:
 
 ---
 
-# 23. Impact Analysis for Future Changes
+# 24. Impact Analysis for Future Changes
 
 Before making a later change, determine its scope.
 
@@ -868,7 +920,7 @@ Use the smallest safe scope.
 
 ---
 
-# 24. Do Not Regress Existing Work
+# 25. Do Not Regress Existing Work
 
 Before modifying anything:
 
@@ -892,7 +944,7 @@ Run appropriate validation on all affected pages.
 
 ---
 
-# 25. Changelog Rules
+# 26. Changelog Rules
 
 Every meaningful action must be logged.
 
@@ -913,7 +965,7 @@ Log meaningful project-level changes.
 
 ---
 
-# 26. State Update Rules
+# 27. State Update Rules
 
 After every Skill:
 
@@ -939,7 +991,7 @@ Next:
 
 ---
 
-# 27. Error Recovery
+# 28. Error Recovery
 
 If a Skill fails:
 
@@ -972,7 +1024,7 @@ Do not restart the entire workflow.
 
 ---
 
-# 28. Validation Between Skills
+# 29. Validation Between Skills
 
 Do not wait until the final stage to discover basic problems.
 
@@ -989,7 +1041,7 @@ Fix blocking issues before proceeding.
 
 ---
 
-# 29. Final QA
+# 30. Final QA
 
 After Skill 18 is completed, verify the entire website.
 
@@ -1017,7 +1069,7 @@ The website must be coherent as a single product.
 
 ---
 
-# 30. Final Build
+# 31. Final Build
 
 Run the production build.
 
@@ -1034,7 +1086,7 @@ Fix blocking issues.
 
 ---
 
-# 31. Completion Report
+# 32. Completion Report
 
 At completion provide:
 
@@ -1087,7 +1139,7 @@ Never claim completion if important work remains.
 
 ---
 
-# 32. How to Start
+# 33. How to Start
 
 When this instruction is given to you:
 
@@ -1120,7 +1172,7 @@ actual project implementation
 
 ---
 
-# 33. Most Important Principle
+# 34. Most Important Principle
 
 The Skill System defines **how to build**.
 
@@ -1132,6 +1184,8 @@ The long-term workflow is:
 
 ```text
 Reusable Skills
+      ↓
+Project Configuration (colors, logos, references)
       ↓
 Website Project
       ↓

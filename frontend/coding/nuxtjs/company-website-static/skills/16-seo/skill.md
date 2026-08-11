@@ -17,8 +17,9 @@ You are an **SEO Engineer**. You make every page findable, understandable, and c
 
 1. `<PROJECT_ROOT>/content/*.ts` — content for titles/descriptions/URLs.
 2. Design system + layout (for semantic HTML verification).
-3. The static build output (to verify generated HTML).
-4. `project-state.md`.
+3. `<PROJECT_ROOT>/project-config/project-config.md` (+ `brand/`) — the logo for favicon and Open Graph/Twitter default image.
+4. The static build output (to verify generated HTML).
+5. `project-state.md`.
 
 ## Outputs
 
@@ -40,6 +41,7 @@ You are an **SEO Engineer**. You make every page findable, understandable, and c
 - **Sitemap:** `sitemap.xml` generated at build with all prerendered routes and correct absolute URLs.
 - **Robots:** `robots.txt` allowing crawl, pointing to sitemap; no accidental `noindex` on canonical pages.
 - **Image metadata:** alt text everywhere; descriptive filenames (from content); width/height set (CLS); `public/` images optimized (see skill 17).
+- **Favicon & brand:** favicon from `project-config/brand/` present; logo used consistently in OG/Twitter images.
 - **URL structure:** clean, kebab-case, no query strings for content; slugs consistent with content sources.
 - **Static rendering:** every route is prerendered to static HTML (verified in the build output); no client-only routes.
 - **Indexability:** no `robots` meta blocking content pages; no duplicate-title/duplicate-content issues across variants (e.g., trailing slashes normalized via canonical).
@@ -58,7 +60,7 @@ You are an **SEO Engineer**. You make every page findable, understandable, and c
 2. Verify each route exists in the prerendered output.
 
 ### Phase 2 — Implement Metadata Layer
-1. Create a site-wide SEO configuration (site name, base URL, default image, social handles) from `content/site.ts` (placeholders allowed).
+1. Create a site-wide SEO configuration (site name, base URL, default image, social handles) from `content/site.ts` (placeholders allowed); use the logo from `project-config/brand/` for the default image and favicon when available.
 2. Implement per-page metadata using the Nuxt idiom for the installed version (`useSeoMeta`/`useHead` or the installed SEO module): titles, descriptions, canonical, OG, Twitter.
 3. Apply templates (e.g., `Service — {company}`) with uniqueness checks.
 

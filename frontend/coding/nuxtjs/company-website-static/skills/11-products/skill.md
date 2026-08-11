@@ -20,7 +20,8 @@ You are a **UX/UI Architect and Product Showcase Designer**. You present product
 2. `content/discovery.ts` — product set, categories.
 3. `content/products.ts` — product records (slug, name, tagline, category, image, tags).
 4. `widget-catalog.md`, `creativity-rules.md`.
-5. `project-state.md`.
+5. `project-config/project-config.md` — brand input (products/content notes, logo).
+6. `project-state.md`.
 
 ## Outputs
 
@@ -59,7 +60,8 @@ Selection is based on product count, visual richness, and brand tone — not pre
 
 ### Phase 1 — Analyze
 1. Read `content/products.ts`: count, categories, and visual material available.
-2. Choose the presentation; justify it.
+2. Cross-check with `project-config.md` content notes (products the user listed are authoritative).
+3. Choose the presentation; justify it.
 
 ### Phase 2 — Propose Architecture
 1. Widget sequence with rationale; check creativity rules.

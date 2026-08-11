@@ -34,11 +34,15 @@ skills/
 
 Copy `run-website-builder.md` (the runner) into the website project root.
 
-### 4. Start the AI coding agent
+### 4. Copy and fill the project configuration
+
+Copy the `project-config/` folder into the website project root, rename `project-config.example.md` to `project-config.md`, and fill in the brand settings — colors, design direction, logo files (into `project-config/brand/`), and design sample images (into `project-config/references/`). See [Project Configuration](#project-configuration-project-config).
+
+### 5. Start the AI coding agent
 
 Open the AI coding agent from the website project root (`my-company-website/`).
 
-### 5. Execute the workflow
+### 6. Execute the workflow
 
 Tell the agent:
 
@@ -58,9 +62,9 @@ The agent should inspect the project history and the current implementation, the
 
 ---
 
-## Two Concepts
+## Three Concepts
 
-The system has two strictly separate concepts:
+The system has three strictly separate concepts:
 
 ### 1. Reusable Skill System (`skills/`)
 
@@ -78,7 +82,21 @@ skills/
 
 These skills are reusable across multiple websites. They are copied into each website project and normally remain **unchanged** during website development.
 
-### 2. Website-Specific State (`.website-builder/`)
+### 2. Project Configuration (`project-config/`)
+
+The **brand input for one particular website**: colors, design direction, layout preferences, logo/brand asset files, design reference images, and content notes. This is where you put the color scheme (رنگبندی), the overall design (طرح کلی), design sample images, and logos for each project.
+
+```text
+project-config/
+├── README.md                  ← how to use this folder
+├── project-config.md          ← filled from project-config.example.md
+├── brand/                     ← logo / favicon / brand asset files
+└── references/                ← design sample images
+```
+
+Copy the folder into each website, then fill `project-config.md` and drop the assets in. See [Project Configuration](#project-configuration-project-config) below. This folder is **input**, not history: approvals and changes are still recorded in `.website-builder/`.
+
+### 3. Website-Specific State (`.website-builder/`)
 
 The memory and history of **one particular website**:
 
@@ -96,41 +114,48 @@ This directory belongs only to that website and **must not be shared between unr
 | Concept | Role |
 | :--- | :--- |
 | `skills/` | **HOW to work** — reusable instructions |
+| `project-config/` | **WHAT the site should look like** — brand input: colors, design direction, logos, reference images, content notes |
 | `.website-builder/` | **WHAT happened** — what was decided, approved, built, and QA'd for this site |
 
 ---
 
 ## This Repository (the Skill System Source)
 
-The reusable skill system lives in this directory. Skills are kept in **numbered folders at the repository root** (not inside a `skills/` subfolder — `skills/` is the per-website copy):
+The reusable skill system lives in this directory. Reusable skills are kept in **numbered folders inside `skills/`** (each website receives its own copy of `skills/`), and the per-project brand configuration template lives in `project-config/`:
 
 ```text
 company-website-static/
 ├── README.md                  ← this document
 ├── run-website-builder.md     ← the runner: execution entry point for AI agents
-├── 00-master-prompt.md        ← the original master prompt that defined the system
-├── 00-orchestrator/           ← skill: orchestration, state, execution modes
-├── 01-project-init/           ← skill: Nuxt static foundation & tooling
-├── 02-discovery/              ← skill: company/brand/visual-reference discovery
-├── 03-design-system/          ← skill + creativity-rules.md
-├── 04-layout-system/          ← skill: layout primitives
-├── 05-widget-library/         ← skill + widget-catalog.md
-├── 06-animation-system/       ← skill: motion patterns & rules
-├── 07-homepage/               ← skill: homepage
-├── 08-about/                  ← skill: about page
-├── 09-contact/                ← skill: static contact page
-├── 10-services/               ← skill + service-detail.md
-├── 11-products/               ← skill + product-detail.md
-├── 12-legal/                  ← skill: legal pages
-├── 13-content-replacement/    ← skill: real content replaces placeholders
-├── 14-responsive/             ← skill: responsive QA + fixes
-├── 15-accessibility/          ← skill: WCAG 2.2 AA audit + remediation
-├── 16-seo/                    ← skill: SEO implementation + audit
-├── 17-performance/            ← skill: performance audit + optimization
-└── 18-visual-qa/              ← skill: screenshot-based visual QA
+├── master-prompt.md           ← the original master prompt that defined the system
+├── skills/                    ← reusable skills (copied into each website)
+│   ├── 00-orchestrator/       ← skill: orchestration, state, execution modes
+│   ├── 01-project-init/       ← skill: Nuxt static foundation & tooling
+│   ├── 02-discovery/          ← skill: company/brand/visual-reference discovery
+│   ├── 03-design-system/      ← skill + creativity-rules.md
+│   ├── 04-layout-system/      ← skill: layout primitives
+│   ├── 05-widget-library/     ← skill + widget-catalog.md
+│   ├── 06-animation-system/   ← skill: motion patterns & rules
+│   ├── 07-homepage/           ← skill: homepage
+│   ├── 08-about/              ← skill: about page
+│   ├── 09-contact/            ← skill: static contact page
+│   ├── 10-services/           ← skill + service-detail.md
+│   ├── 11-products/           ← skill + product-detail.md
+│   ├── 12-legal/              ← skill: legal pages
+│   ├── 13-content-replacement/← skill: real content replaces placeholders
+│   ├── 14-responsive/         ← skill: responsive QA + fixes
+│   ├── 15-accessibility/      ← skill: WCAG 2.2 AA audit + remediation
+│   ├── 16-seo/                ← skill: SEO implementation + audit
+│   ├── 17-performance/        ← skill: performance audit + optimization
+│   └── 18-visual-qa/          ← skill: screenshot-based visual QA
+└── project-config/            ← per-project brand configuration template
+    ├── README.md              ← how to use this folder
+    ├── project-config.example.md ← the template to copy and fill per website
+    ├── brand/                 ← drop logo / favicon / brand asset files here
+    └── references/            ← drop design sample images here
 ```
 
-To create a website, copy the numbered skill folders (and the runner) into the website project as described in **Quick Start**.
+To create a website, copy the `skills/` folder and the `project-config/` folder (and the runner) into the website project as described in **Quick Start**.
 
 ---
 
@@ -143,6 +168,7 @@ websites/
 │
 ├── company-a/
 │   ├── skills/            ← copy of the reusable Skill System
+│   ├── project-config/    ← this website's brand input (colors, direction, logos, references)
 │   ├── .website-builder/  ← this website's memory (state, decisions, history)
 │   ├── app/               ← website implementation
 │   ├── pages/
@@ -153,6 +179,7 @@ websites/
 │
 └── company-b/
     ├── skills/
+    ├── project-config/
     ├── .website-builder/
     ├── app/
     ├── pages/
@@ -163,9 +190,43 @@ websites/
 Rules:
 
 - `skills/` is **copied** from the reusable Skill System and normally stays unchanged during website development.
+- `project-config/` is **copied** per website and filled with that website's brand settings — colors, design direction, logos in `brand/`, design samples in `references/`. It is input, not history; changes still get approved and recorded in `.website-builder/`.
 - `.website-builder/` belongs **only to that website** — it holds the site's history and must not be shared with other websites.
 - The website implementation (code, content, design tokens) belongs **only to that website**.
 - Skills should normally remain unchanged; website-specific decisions go into `.website-builder/`, never into skill files.
+
+---
+
+## Project Configuration (`project-config/`)
+
+The **project configuration** is where each website's brand input lives: the color scheme, the overall design direction, layout preferences, logo files, design sample images, and content notes.
+
+```text
+<website>/project-config/
+├── README.md                  ← how to use this folder
+├── project-config.md          ← the filled configuration (copy of project-config.example.md)
+├── brand/                     ← logo / favicon / brand asset files (logo.svg, logo-dark.svg, …)
+└── references/                ← design sample images (hero-style-01.jpg, mockups, …)
+```
+
+### How to fill it
+
+1. Copy `project-config/` into the website project root.
+2. Rename `project-config.example.md` → `project-config.md`.
+3. Fill in what you know: company identity, colors (with hex values), typography, design direction (or leave it to the agent to propose), content notes.
+4. Drop assets in: logos → `brand/`, design samples → `references/`.
+5. Reference the asset files by relative path in `project-config.md` (e.g. `brand/logo.svg`, `references/hero-style-01.jpg`).
+
+Anything left empty is proposed by the agent during Discovery (02) and Design System (03) and approved by you before implementation.
+
+### How the agents consume it
+
+- **01 Project Init** verifies `project-config/` exists and scaffolds the template if missing.
+- **02 Discovery** reads `project-config.md` first and never re-asks for anything already provided.
+- **03 Design System** uses the configured colors/typography/direction as the base and honors them like user decisions.
+- **07–12 Pages** use the configured logo and brand assets; **13 Content** uses the content notes; **16 SEO** uses the logo; **18 Visual QA** compares the result against the reference images.
+
+> **Rule:** configuration values are user input — treat them like approved decisions and never silently override them (Cross-Skill Rule 2).
 
 ---
 
@@ -204,8 +265,9 @@ the actual project implementation
 1. Create a new website directory.
 2. Copy the reusable skills into `skills/`.
 3. Copy `run-website-builder.md`.
-4. Start the AI coding agent from the website project root.
-5. Ask the agent to execute `run-website-builder.md`.
+4. Copy `project-config/` and fill `project-config.md` — colors, design direction, logo (into `brand/`), design references (into `references/`).
+5. Start the AI coding agent from the website project root.
+6. Ask the agent to execute `run-website-builder.md`.
 6. The agent initializes the project (Skill 01).
 7. The agent runs discovery (Skill 02).
 8. The agent asks for design information when needed.
@@ -326,7 +388,7 @@ Skills may be rerun when necessary (e.g., QA findings mark a skill `NEEDS_REVISI
 
 - **00** depends on nothing; everything depends on 00 for state and mode.
 - **01** must run before any implementation skill (07–12).
-- **02** must run before **03** (design direction is derived from discovery).
+- **02** must run before **03** (design direction is derived from discovery). Both 02 and 03 read `project-config/` — if `project-config.md` exists, its colors, design direction, logos, and references are primary input, treated like approved user decisions.
 - **03** must run before **04**, **05**, **06**, and all page skills (07–12) — they consume design tokens.
 - **04** and **05** must run before page skills (07–12) — pages compose layout primitives and widgets.
 - **06** must complete before page skills so animations are available.
@@ -586,6 +648,7 @@ State is recorded in `.website-builder/state.md` (per the runner) — a simple m
 
 - **Website root:** the website project the runner is executed from.
 - **Reusable skills:** copied into `<website>/skills/` (source: the numbered folders in this repository).
+- **Project configuration:** `<website>/project-config/` — `project-config.md` (brand settings: colors, direction, content notes) + `brand/` (logos) + `references/` (design samples). Source template: `project-config/` in this repository.
 - **Website memory:** `<website>/.website-builder/` — `state.md`, `decisions.md`, `changelog.md`, `design-history.md`, `qa-history.md`.
 - **Content sources:** `<website>/content/*.ts` (`site.ts`, `homepage.ts`, `about.ts`, `services.ts`, `products.ts`, `legal.ts`, `discovery.ts`).
 - **Design system:** `<website>/design-system/` — `design-direction.md` and the design tokens (CSS variables / Tailwind theme).

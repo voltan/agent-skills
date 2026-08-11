@@ -16,7 +16,8 @@ Design and implement the **individual product page** at `/products/[slug]`, with
 
 1. Design system, `widget-catalog.md`, `creativity-rules.md`.
 2. `content/products.ts` — the specific product record.
-3. `content/site.ts`, `project-state.md`.
+3. `project-config/project-config.md` — brand input (product content notes, logo).
+4. `content/site.ts`, `project-state.md`.
 
 ## Outputs
 
@@ -46,7 +47,8 @@ CTA
 
 ### Phase 1 — Analyze the Product
 1. Read the specific product record.
-2. Map fields to candidate sections; drop sections without content.
+2. Cross-check with `project-config.md` content notes if the user described the product there.
+3. Map fields to candidate sections; drop sections without content.
 
 ### Phase 2 — Propose Architecture
 1. Section/widget list with rationale (Widget Selection Protocol).

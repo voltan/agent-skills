@@ -17,15 +17,17 @@ You are a **Principal Nuxt.js Architect and Tooling Engineer**. You establish th
 ## Inputs
 
 1. `<PROJECT_ROOT>/project-state.md` — active mode and any approved decisions.
-2. Installed environment: Node version, available package managers. **Never hard-code framework versions** — verify the current stable Nuxt version and its requirements at runtime against the official Nuxt documentation.
+2. `<PROJECT_ROOT>/project-config/` — the brand configuration folder copied by the user (may be absent; see *Outputs* and Phase 3).
+3. Installed environment: Node version, available package managers. **Never hard-code framework versions** — verify the current stable Nuxt version and its requirements at runtime against the official Nuxt documentation.
 
 ## Outputs
 
 1. A complete Nuxt project skeleton at `<PROJECT_ROOT>`: `nuxt.config.ts`, `package.json`, TypeScript config, Tailwind config/plugin, ESLint, Prettier, `.gitignore`, and directory structure.
 2. The **content sources** skeleton: `content/site.ts`, `content/homepage.ts`, `content/about.ts`, `content/services.ts`, `content/products.ts`, `content/legal.ts` — each exporting typed placeholder records (see skill 13 conventions).
 3. The **design-system** skeleton directory: `design-system/` (tokens to be filled by skill 03) and `design-system/README.md` explaining where tokens and the design direction will live.
-4. Architecture documentation: `docs/architecture.md` describing the component, layout, asset, content, and route organization.
-5. Updated `project-state.md`: status `COMPLETED`, list of created artifacts.
+4. The **project configuration** scaffold: if the user has not copied `project-config/`, create `<PROJECT_ROOT>/project-config/project-config.md` from the `project-config.example.md` template (all sections empty) so the user can fill in colors, design direction, logos, and references before skill 02/03.
+5. Architecture documentation: `docs/architecture.md` describing the component, layout, asset, content, and route organization.
+6. Updated `project-state.md`: status `COMPLETED`, list of created artifacts.
 
 ## Responsibilities
 
@@ -60,6 +62,7 @@ You are a **Principal Nuxt.js Architect and Tooling Engineer**. You establish th
    - `public/` — static assets (favicon, robots placeholder)
    - `content/` — structured content sources
    - `design-system/` — tokens and design direction (skill 03)
+   - `project-config/` — brand configuration (colors, direction, logos, references); if the user already copied it, verify it exists; otherwise scaffold the empty `project-config.md` template (see *Outputs*)
 2. Write `docs/architecture.md` documenting every decision below.
 
 ### Phase 4 — Configure Tooling
@@ -87,6 +90,7 @@ You are a **Principal Nuxt.js Architect and Tooling Engineer**. You establish th
 - **Styling:** Tailwind CSS as the default; design tokens are the single source of styling values.
 - **Static-only:** any module or config that requires a server at runtime is rejected.
 - **No business content:** do not invent company name, services, products, or copy at this stage.
+- **No business assets:** do not create logos, brand files, or design images — those come from the user via `project-config/brand/` and `project-config/references/`.
 - **Minimal dependencies:** add only tooling that the later skills demonstrably need; avoid speculative packages.
 
 ## User Interaction
